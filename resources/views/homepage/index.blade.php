@@ -12,7 +12,8 @@
       <p class="text-lg text-gray-600 dark:text-slate-300 mb-8 max-w-2xl">
         Ikuti kuesioner sederhana untuk mendapatkan gambaran awal tentang kondisi emosimu.
       </p>
-      <a href="/kuisioner" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold transition">
+      <a href="{{ route('kuisioner') }}"
+        class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold transition">
         Mulai Tes Sekarang
       </a>
     </div>

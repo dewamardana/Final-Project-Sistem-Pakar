@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>@yield('title', 'Dashboard')</title>
+  <title>{{ $title }}</title>
   @vite('resources/css/app.css')
   <script src="https://unpkg.com/flowbite@2.5.1/dist/flowbite.min.js"></script>
 </head>

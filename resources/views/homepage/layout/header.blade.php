@@ -7,8 +7,8 @@
       <span class="text-amber-500 text-xl font-bold">MindCheck</span>
     </a>
     <div class="hidden md:flex space-x-6">
-      <a href="/dashboard" class="hover:text-amber-500">Dashboard</a>
-      <a href="/kuisioner" class="hover:text-amber-500">Tes Mental</a>
+      <a href="{{ route('dashboard') }}" class="hover:text-amber-500">Dashboard</a>
+      <a href="/{{ route('kuisioner') }}" class="hover:text-amber-500">Tes Mental</a>
       <a href="/#artikel" class="hover:text-amber-500">Artikel</a>
       <a href="/#testimoni" class="hover:text-amber-500">Artikel</a>
       <a href="/#faq" class="hover:text-amber-500">FAQ</a>

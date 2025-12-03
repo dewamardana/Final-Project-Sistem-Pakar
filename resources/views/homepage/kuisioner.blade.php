@@ -12,81 +12,64 @@
           style="width: 0%"></div>
       </div>
 
-      <!-- Form -->
-      <form action="" method="POST" id="quizForm" x-data="{ step: 1, total: 3 }">
+      <form action="" method="POST" id="quizForm" x-data="{ step: 1, total: {{ count($gejalas) }} }">
         @csrf
 
-        <!-- Pertanyaan 1 -->
-        <div x-show="step === 1" x-transition>
-          <p class="text-lg font-medium mb-4 text-gray-800 dark:text-gray-200">
-            1. Seberapa sering Anda merasa sedih tanpa alasan yang jelas?
-          </p>
-          <div class="grid grid-cols-2 gap-4">
-            @foreach (['Tidak Pernah', 'Jarang', 'Sering', 'Sangat Sering'] as $i => $opt)
-              <label class="cursor-pointer">
-                <input type="radio" name="q1" value="{{ $opt }}" class="hidden peer" required>
-                <div
-                  class="p-4 text-center rounded-lg border border-gray-300 dark:border-slate-600 peer-checked:bg-amber-500 peer-checked:text-white transition">
-                  {{ $opt }}
-                </div>
-              </label>
-            @endforeach
-          </div>
-          <button type="button" @click="step++ ; document.getElementById('progress-bar').style.width = '33%'"
-            class="mt-6 w-full bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg">Lanjut</button>
+        <!-- Input Nama -->
+        <div class="mb-4" x-show="step === 0">
+          <label for="nama" class="block font-medium text-gray-700 dark:text-gray-300">Nama Anda</label>
+          <input type="text" name="nama" id="nama" required
+            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring">
         </div>
 
-        <!-- Pertanyaan 2 -->
-        <div x-show="step === 2" x-transition>
-          <p class="text-lg font-medium mb-4 text-gray-800 dark:text-gray-200">
-            2. Apakah Anda kesulitan tidur atau sering terbangun di malam hari?
-          </p>
-          <div class="grid grid-cols-2 gap-4">
-            @foreach (['Tidak Pernah', 'Kadang-kadang', 'Sering', 'Hampir Selalu'] as $i => $opt)
-              <label class="cursor-pointer">
-                <input type="radio" name="q2" value="{{ $opt }}" class="hidden peer" required>
-                <div
-                  class="p-4 text-center rounded-lg border border-gray-300 dark:border-slate-600 peer-checked:bg-amber-500 peer-checked:text-white transition">
-                  {{ $opt }}
-                </div>
-              </label>
-            @endforeach
+        <!-- Pertanyaan -->
+        @foreach ($gejalas as $i => $gejala)
+          <div x-show="step === {{ $i + 1 }}" x-transition>
+            <p class="mb-2 font-medium">{{ $gejala->kode }} - {{ $gejala->gejala }}</p>
+            <div class="grid grid-cols-2 gap-3">
+              @foreach ($gejala->jawabans as $jawaban)
+                <label class="cursor-pointer">
+                  <input type="radio" name="q{{ $gejala->id }}" value="{{ $jawaban->pivot->nilai }}"
+                    class="hidden peer" required>
+                  <div class="p-3 border rounded-lg peer-checked:bg-amber-500 peer-checked:text-white">
+                    {{ $jawaban->nama }}
+                  </div>
+                </label>
+              @endforeach
+            </div>
           </div>
-          <div class="flex justify-between mt-6">
-            <button type="button" @click="step-- ; document.getElementById('progress-bar').style.width = '0%'"
-              class="px-4 py-2 rounded-lg border border-gray-300 dark:border-slate-600 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-700">Kembali</button>
-            <button type="button" @click="step++ ; document.getElementById('progress-bar').style.width = '66%'"
-              class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg">Lanjut</button>
-          </div>
-        </div>
+        @endforeach
 
-        <!-- Pertanyaan 3 -->
-        <div x-show="step === 3" x-transition>
-          <p class="text-lg font-medium mb-4 text-gray-800 dark:text-gray-200">
-            3. Apakah Anda merasa kehilangan minat pada aktivitas yang biasanya menyenangkan?
-          </p>
-          <div class="grid grid-cols-2 gap-4">
-            @foreach (['Tidak Pernah', 'Kadang-kadang', 'Sering', 'Selalu'] as $i => $opt)
-              <label class="cursor-pointer">
-                <input type="radio" name="q3" value="{{ $opt }}" class="hidden peer" required>
-                <div
-                  class="p-4 text-center rounded-lg border border-gray-300 dark:border-slate-600 peer-checked:bg-amber-500 peer-checked:text-white transition">
-                  {{ $opt }}
-                </div>
-              </label>
-            @endforeach
-          </div>
-          <div class="flex justify-between mt-6">
-            <button type="button" @click="step-- ; document.getElementById('progress-bar').style.width = '33%'"
-              class="px-4 py-2 rounded-lg border border-gray-300 dark:border-slate-600 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-700">Kembali</button>
-            <button type="submit" @click="document.getElementById('progress-bar').style.width = '100%'"
-              class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg">Selesai</button>
-          </div>
+        <!-- Tombol Navigasi -->
+        <div class="mt-6 flex justify-between">
+          <button type="button" x-show="step > 0" @click="step--"
+            class="px-4 py-2 rounded-lg bg-gray-400 hover:bg-gray-500 text-white">
+            Kembali
+          </button>
+
+          <button type="button" x-show="step < total"
+            @click="
+            // pastikan nama terisi jika step 0
+            if(step === 0 && !document.getElementById('nama').value){ alert('Isi nama terlebih dahulu!'); return; }
+            step++;
+            document.getElementById('progress-bar').style.width = ((step / total) * 100) + '%';
+        "
+            class="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-white">
+            Lanjut
+          </button>
+
+          <button type="submit" x-show="step === total"
+            class="px-4 py-2 rounded-lg bg-green-500 hover:bg-green-600 text-white">
+            Selesai
+          </button>
         </div>
       </form>
+
+
     </div>
   </section>
 @endsection
+
 @section('script')
   <!-- Alpine.js untuk interaktivitas -->
   <script src="//unpkg.com/alpinejs" defer></script>

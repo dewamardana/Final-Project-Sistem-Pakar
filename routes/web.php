@@ -1,37 +1,27 @@
 <?php
 
+use App\Models\TingkatDepresi;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('homepage.index');
-});
-
-
-Route::get('/login', function () {
-    return view('homepage.auth.login');
-});
-
-Route::get('/kuisioner', function () {
-    return view('homepage.kuisioner');
-});
+use App\Http\Controllers\FormController;
+use App\Http\Controllers\GejalaController;
+use App\Http\Controllers\JawabanController;
+use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TingkatDepresiController;
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-});
 
-Route::get('/dashboard/gejala', function () {
-    return view('dashboard.gejala.index');
-});
+Route::get('/', [HomepageController::class, 'index'])->name('homepage');
+Route::get('/kuisioner', [HomepageController::class, 'kuisioner'])->name('kuisioner');
 
-Route::get('/dashboard/gejala/create', function () {
-    return view('dashboard.gejala.create');
-});
 
-Route::get('/dashboard/gejala/edit', function () {
-    return view('dashboard.gejala.edit');
-});
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+// Route::resource('/dashboard/gejala', GejalaController::class)->except('show');
+Route::resource('/dashboard/depresi', TingkatDepresiController::class)->except('show');
+Route::resource('jawaban', JawabanController::class)->except(['show', 'create', 'edit']);
+Route::resource('/dashboard/gejala', FormController::class);
 
-Route::get('/dashboard/gejala/show', function () {
-    return view('dashboard.gejala.show');
-});
+
+// Route::get('/login', function () {
+//     return view('homepage.auth.login');
+// });

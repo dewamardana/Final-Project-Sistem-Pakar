@@ -1,29 +1,40 @@
 @extends('dashboard.layouts.main')
 @section('content')
-  <div class="bg-white dark:bg-slate-800 shadow rounded-lg p-6">
-    <h2 class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">Edit Artikel</h2>
-    <form action="#" method="POST" class="space-y-4">
+  <div class="bg-white dark:bg-slate-800 shadow rounded-lg p-6 mx-auto max-w-2xl">
+    <h2 class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">Edit Gejala</h2>
+
+    <form action="{{ route('gejala.update', $gejala->id) }}" method="POST">
       @csrf
       @method('PUT')
-      <div>
-        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-200">Judul</label>
-        <input type="text" name="judul" value="5 Cara Mengurangi Stres"
-          class="block w-full p-2 border rounded-lg text-gray-900 dark:text-gray-100 dark:bg-slate-700 dark:border-slate-600 focus:ring-amber-500 focus:border-amber-500">
+
+      <div class="mb-4">
+        <label for="kode" class="block text-gray-700 dark:text-gray-300">Kode Gejala</label>
+        <input type="text" name="kode" id="kode" value="{{ old('kode', $gejala->kode) }}"
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring
+          @error('kode') border-red-500 @enderror">
+        @error('kode')
+          <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+        @enderror
       </div>
-      <div>
-        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-200">Kategori</label>
-        <select name="kategori"
-          class="block w-full p-2 border rounded-lg text-gray-900 dark:text-gray-100 dark:bg-slate-700 dark:border-slate-600 focus:ring-amber-500 focus:border-amber-500">
-          <option value="artikel" selected>Artikel</option>
-          <option value="berita">Berita</option>
-        </select>
+
+      <div class="mb-4">
+        <label for="gejala" class="block text-gray-700 dark:text-gray-300">Nama Gejala</label>
+        <input type="text" name="gejala" id="gejala" value="{{ old('gejala', $gejala->gejala) }}"
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring
+          @error('gejala') border-red-500 @enderror">
+        @error('gejala')
+          <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+        @enderror
       </div>
-      <div>
-        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-200">Konten</label>
-        <textarea name="konten" rows="5"
-          class="block w-full p-2 border rounded-lg text-gray-900 dark:text-gray-100 dark:bg-slate-700 dark:border-slate-600 focus:ring-amber-500 focus:border-amber-500">Tips sederhana agar tetap tenang...</textarea>
-      </div>
-      <button type="submit" class="bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600">Update</button>
+
+      <button type="submit"
+        class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center me-2 mb-2 dark:focus:ring-yellow-900">
+        Update
+      </button>
+      <a href="{{ route('gejala.index') }}"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-xl text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        Kembali
+      </a>
     </form>
   </div>
 @endsection
