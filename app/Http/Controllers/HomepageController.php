@@ -27,31 +27,31 @@ class HomepageController extends Controller
         ]);
     }
 
-    public function submitKuisioner(Request $request)
-    {
-        $request->validate([
-            'nama' => 'required|string|max:255',
-        ]);
+    // public function submitKuisioner(Request $request)
+    // {
+    //     $request->validate([
+    //         'nama' => 'required|string|max:255',
+    //     ]);
 
-        $gejalas = Gejala::with('jawabans')->get();
-        $nama = $request->nama;
+    //     $gejalas = Gejala::with('jawabans')->get();
+    //     $nama = $request->nama;
 
-        foreach ($gejalas as $gejala) {
-            $field = 'q' . $gejala->id;
-            if ($request->has($field)) {
-                // cari jawaban berdasarkan nilai
-                $jawabanModel = $gejala->jawabans->firstWhere('pivot.nilai', $request->$field);
+    //     foreach ($gejalas as $gejala) {
+    //         $field = 'q' . $gejala->id;
+    //         if ($request->has($field)) {
+    //             // cari jawaban berdasarkan nilai
+    //             $jawabanModel = $gejala->jawabans->firstWhere('pivot.nilai', $request->$field);
 
-                UserResponse::create([
-                    'nama' => $nama,
-                    'gejala_id' => $gejala->id,
-                    'jawaban' => $jawabanModel->nama ?? '',
-                    'nilai' => $request->$field,
-                ]);
-            }
-        }
+    //             UserResponse::create([
+    //                 'nama' => $nama,
+    //                 'gejala_id' => $gejala->id,
+    //                 'jawaban' => $jawabanModel->nama ?? '',
+    //                 'nilai' => $request->$field,
+    //             ]);
+    //         }
+    //     }
 
-        return redirect()->route('homepage.thankyou')
-            ->with('success', 'Kuisioner berhasil dikirim!');
-    }
+    //     return redirect()->route('homepage.thankyou')
+    //         ->with('success', 'Kuisioner berhasil dikirim!');
+    // }
 }

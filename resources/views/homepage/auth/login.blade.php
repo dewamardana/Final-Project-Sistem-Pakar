@@ -6,7 +6,7 @@
       <h2 class="text-2xl font-bold text-center mb-6 text-gray-900 dark:text-slate-100">Login ke <span
           class="text-amber-500">MindCheck</span></h2>
 
-      <form action="" method="POST" class="space-y-5">
+      <form action="{{ route('login.store') }}" method="POST" class="space-y-5">
         @csrf
         <!-- Email -->
         <div>

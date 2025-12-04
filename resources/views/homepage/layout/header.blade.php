@@ -19,7 +19,8 @@
       <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-slate-700">
         🌙
       </button>
-      <a href="/login" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition">Login</a>
+      <a href="{{ route('login.index') }}"
+        class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition">Login</a>
     </div>
   </div>
 </nav>

@@ -13,7 +13,7 @@
 
     <!-- Profile -->
     <div class="flex items-center space-x-3">
-      <form action="" method="POST">
+      <form action="{{ route('logout') }}" method="POST">
         @csrf
         <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition">
           Logout

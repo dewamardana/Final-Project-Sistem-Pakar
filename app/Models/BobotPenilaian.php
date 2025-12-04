@@ -5,22 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Gejala extends Model
+class BobotPenilaian extends Model
 {
-
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $fillable = ['kode', 'nama_gejala', 'kategori', 'bobot_awal', 'user_id'];
-
+    protected $fillable = ['certainty_term', 'cf', 'user_id'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function KonsultasiGejala()
-    {
-        return $this->hasMany(KonsultasiGejala::class);
     }
 }

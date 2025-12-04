@@ -5,19 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class UserResponse extends Model
+class KonsultasiGejala extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'gejala_id', 'jawaban', 'nilai'];
+    protected $guarded = ['id'];
+    protected $fillable = ['konsultasi_id', 'gejala_id', 'jawaban', 'cf_user', 'cf_evidence'];
 
-    // Relasi ke user
-    public function user()
+    public function konsultasi()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Konsultasi::class);
     }
-
-    // Relasi ke gejala
     public function gejala()
     {
         return $this->belongsTo(Gejala::class);

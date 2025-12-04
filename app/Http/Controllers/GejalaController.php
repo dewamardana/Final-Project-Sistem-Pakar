@@ -4,20 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Gejala;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GejalaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
-        $gejala = Gejala::all();
         return view('dashboard.gejala.index', [
             'title' => 'Gejala | Dashboard',
-            'gejala' => $gejala,
+            'gejala' => Gejala::orderBy('id')->get(),
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -34,12 +36,21 @@ class GejalaController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
         $request->validate([
-            'kode'   => 'required|unique:gejalas,kode',
-            'gejala' => 'required|unique:gejalas,gejala'
+            'kode'        => 'required|unique:gejalas,kode',
+            'nama_gejala' => 'required|unique:gejalas,nama_gejala',
+            'kategori'    => 'required|in:utama,lain,berat',
+            'bobot_awal'  => 'required|numeric'
         ]);
 
-        Gejala::create($request->all());
+        Gejala::create([
+            'kode'        => $request->kode,
+            'nama_gejala' => $request->nama_gejala,
+            'kategori'    => $request->kategori,
+            'bobot_awal'  => $request->bobot_awal,
+            'user_id'     => $user->id,
+        ]);
 
         return redirect()->route('gejala.index')->with('success', 'Gejala berhasil ditambahkan');
     }
@@ -59,27 +70,40 @@ class GejalaController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Gejala $gejala)
     {
-        $validated = $request->validate([
-            'kode'   => 'required|unique:gejalas,kode,' . $gejala->id,
-            'gejala' => 'required|unique:gejalas,gejala,' . $gejala->id,
+        $request->validate([
+            'kode' => 'required|unique:gejalas,kode,' . $gejala->id,
+            'nama_gejala' => 'required|unique:gejalas,nama_gejala',
+            'kategori' => 'required|in:utama,lain,berat',
+            'bobot_awal' => 'required|numeric'
         ]);
 
-        $gejala->update($validated);
+        $gejala->update([
+            'kode' => $request->kode,
+            'nama_gejala' => $request->nama_gejala,
+            'kategori' => $request->kategori,
+            'bobot_awal' => $request->bobot_awal,
+        ]);
 
-        return redirect()->route('gejala.index')->with('success', 'Gejala berhasil diperbarui.');
+        return redirect()->route('gejala.index')->with('success', 'Gejala berhasil diperbarui');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Gejala $gejala)
     {
+        // Cek apakah gejala masih digunakan di tabel lain
+        $relasiDipakai = $gejala->konsultasiGejala()->exists();
+
+        if ($relasiDipakai) {
+            return redirect()->route('gejala.index')->with('error', 'Gejala tidak dapat dihapus karena masih digunakan pada data lain.');
+        }
+
+        // Hapus jika aman
         $gejala->delete();
-        return redirect()->route('gejala.index')->with('success', 'Gejala berhasil dihapus.');
+        return redirect()->route('gejala.index')->with('success', 'Gejala berhasil dihapus');
     }
 }

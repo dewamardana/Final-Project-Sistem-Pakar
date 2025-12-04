@@ -18,12 +18,11 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call([
+            UserSeeder::class,
             GejalaSeeder::class,
-            TingkatDepresiSeeder::class,
-            JawabanSeeder::class,
-            FormSeeder::class,
-            // PostSeeder::class,
-            // CommentSeeder::class,
+            PenyakitSeeder::class,
+            BobotPenilaianSeeder::class,
+            AturanSeeder::class,
         ]);
 
         // User::factory()->create([

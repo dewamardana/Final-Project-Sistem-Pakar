@@ -5,22 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Gejala extends Model
+class Penyakit extends Model
 {
 
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $fillable = ['kode', 'nama_gejala', 'kategori', 'bobot_awal', 'user_id'];
-
+    protected $fillable = ['nama_penyakit', 'user_id'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
-    public function KonsultasiGejala()
+    public function aturan()
     {
-        return $this->hasMany(KonsultasiGejala::class);
+        return $this->hasMany(Aturan::class);
+    }
+    public function KonsultasiHasil()
+    {
+        return $this->hasMany(KonsultasiHasil::class);
     }
 }

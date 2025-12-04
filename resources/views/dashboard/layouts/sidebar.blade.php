@@ -14,22 +14,31 @@
         </a>
       </li>
       <li>
-        <a href="{{ route('jawaban.index') }}"
+        <a href="{{ route('bobot_penilaian.index') }}"
           class="flex items-center p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-700">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6">
             </path>
           </svg>
-          <span class="ml-3">Jawaban</span>
+          <span class="ml-3">CF User</span>
         </a>
       </li>
       <li>
-        <a href="{{ route('depresi.index') }}"
+        <a href="{{ route('penyakit.index') }}"
           class="flex items-center p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-700">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
           </svg>
           <span class="ml-3">Depresi</span>
+        </a>
+      </li>
+      <li>
+        <a href="{{ route('aturan.index') }}"
+          class="flex items-center p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-700">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+          </svg>
+          <span class="ml-3">Rule Base</span>
         </a>
       </li>
 

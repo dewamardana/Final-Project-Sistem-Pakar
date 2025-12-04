@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tingkat_depresis', function (Blueprint $table) {
+        Schema::create('konsultasis', function (Blueprint $table) {
             $table->id();
-            $table->string('kode');
-            $table->string('depresi');
+            $table->string('kode_konsultasi');
+            $table->dateTime('tanggal');
+            $table->string('nama_pasien')->nullable();
+            $table->integer('umur');
+            $table->string('jenis_kelamin');
+            $table->text('catatan')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tingkat_depresis');
+        Schema::dropIfExists('konsultasis');
     }
 };

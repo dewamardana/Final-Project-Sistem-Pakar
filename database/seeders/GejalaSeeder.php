@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Gejala;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class GejalaSeeder extends Seeder
@@ -14,40 +13,30 @@ class GejalaSeeder extends Seeder
      */
     public function run(): void
     {
-        $gejala = [
-            ["kode" => "G001", "gejala" => "Sering Merasa Sedih"],
-            ["kode" => "G002", "gejala" => "Sering kelelahan melakukan aktifitas ringan"],
-            ["kode" => "G003", "gejala" => "Kurang konsentrasi dalam belajar"],
-            ["kode" => "G004", "gejala" => "Mudah merasa bosan"],
-            ["kode" => "G005", "gejala" => "Sering Melamun"],
-            ["kode" => "G006", "gejala" => "Tidak semangat melakukan sesuatu"],
-            ["kode" => "G007", "gejala" => "Merasa Risau"],
-            ["kode" => "G008", "gejala" => "Pesimis"],
-            ["kode" => "G009", "gejala" => "Sering menangis secara tiba-tiba"],
-            ["kode" => "G010", "gejala" => "Gangguan susah Tidur"],
-            ["kode" => "G011", "gejala" => "Merasa Cemas Berlebihan"],
-            ["kode" => "G012", "gejala" => "Kecewa dengan diri sendiri"],
-            ["kode" => "G013", "gejala" => "Terganggu dengan banyak hal"],
-            ["kode" => "G014", "gejala" => "Sering murung"],
-            ["kode" => "G015", "gejala" => "Kehilangan minat terhadap hoby"],
-            ["kode" => "G016", "gejala" => "Merasa kesepian"],
-            ["kode" => "G017", "gejala" => "Sering merasa bersalah"],
-            ["kode" => "G018", "gejala" => "Merasa dihakimi"],
-            ["kode" => "G019", "gejala" => "Membenci Diri Sendiri"],
-            ["kode" => "G020", "gejala" => "Mudah tersinggung"],
-            ["kode" => "G021", "gejala" => "Kehilangan Nafsu makan"],
-            ["kode" => "G022", "gejala" => "Khawatir tentang penampilan"],
-            ["kode" => "G023", "gejala" => "Mudah Marah"],
-            ["kode" => "G024", "gejala" => "Suka menyendiri"],
-            ["kode" => "G025", "gejala" => "Pikiran Untuk Bunuh Diri"],
-            ["kode" => "G026", "gejala" => "Sulit mengambil keputusan"],
-            ["kode" => "G027", "gejala" => "Sulit melakukan kegiatan dengan Baik"],
-            ["kode" => "G028", "gejala" => "Ada penambahan dan penurunan berat badan"],
-            ["kode" => "G029", "gejala" => "Kurang percaya diri"],
+        $user = 1; // sesuaikan jika perlu
+
+        $data = [
+            // Gejala Utama
+            ['kode' => 'G001', 'nama_gejala' => 'Afek depresif', 'kategori' => 'utama', 'bobot_awal' => 0.85],
+            ['kode' => 'G002', 'nama_gejala' => 'Kehilangan minat dan kegembiraan', 'kategori' => 'utama', 'bobot_awal' => 0.80],
+            ['kode' => 'G003', 'nama_gejala' => 'Berkurangnya energi dan mudah lelah', 'kategori' => 'utama', 'bobot_awal' => 0.75],
+
+            // Gejala Lain
+            ['kode' => 'G004', 'nama_gejala' => 'Konsentrasi dan perhatiannya berkurang', 'kategori' => 'lain', 'bobot_awal' => 0.55],
+            ['kode' => 'G005', 'nama_gejala' => 'Harga diri dan kepercayaan diri berkurang', 'kategori' => 'lain', 'bobot_awal' => 0.60],
+            ['kode' => 'G006', 'nama_gejala' => 'Gagasan rasa bersalah dan tidak berguna', 'kategori' => 'lain', 'bobot_awal' => 0.55],
+            ['kode' => 'G007', 'nama_gejala' => 'Pandangan masa depan suram dan pesimistis', 'kategori' => 'lain', 'bobot_awal' => 0.70],
+            ['kode' => 'G008', 'nama_gejala' => 'Gagasan atau tindakan bunuh diri', 'kategori' => 'lain', 'bobot_awal' => 0.95],
+            ['kode' => 'G009', 'nama_gejala' => 'Tidur terganggu', 'kategori' => 'lain', 'bobot_awal' => 0.50],
+            ['kode' => 'G010', 'nama_gejala' => 'Nafsu makan berkurang', 'kategori' => 'lain', 'bobot_awal' => 0.45],
+
+            // Gejala Berat
+            ['kode' => 'G011', 'nama_gejala' => 'Agitasi / retardasi psikomotor', 'kategori' => 'berat', 'bobot_awal' => 0.85],
+            ['kode' => 'G012', 'nama_gejala' => 'Waham, halusinasi, stupor depresif', 'kategori' => 'berat', 'bobot_awal' => 1.00],
         ];
 
-        foreach ($gejala as $item) {
-            Gejala::create($item);
+        foreach ($data as $item) {
+            Gejala::create($item + ['user_id' => $user]);
         }
     }
 }
