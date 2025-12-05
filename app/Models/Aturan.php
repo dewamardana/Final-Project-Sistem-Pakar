@@ -12,6 +12,7 @@ class Aturan extends Model
 
     protected $guarded = ['id'];
     protected $fillable = [
+        'kode',
         'penyakit_id',
         'min_gejala_utama',
         'min_gejala_lain',

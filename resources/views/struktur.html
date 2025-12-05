@@ -1,0 +1,224 @@
+Schema::create('users', function (Blueprint $table) {
+$table->id();
+$table->string('name');
+$table->string('email')->unique();
+$table->string('role')->default('user');
+$table->timestamp('email_verified_at')->nullable();
+$table->string('password');
+$table->rememberToken();
+$table->timestamps();
+});
+
+Schema::create('gejalas', function (Blueprint $table) {
+$table->id();
+$table->string('kode')->unique();
+$table->text('nama_gejala');
+$table->string('kategori'); // utama / lain / berat
+$table->float('bobot_awal');
+$table->foreignId('user_id')->constrained();
+$table->timestamps();
+});
+
+Schema::create('penyakits', function (Blueprint $table) {
+$table->id();
+$table->string('kode')->unique();
+$table->text('nama_penyakit');
+$table->foreignId('user_id')->constrained();
+$table->timestamps();
+});
+
+Schema::create('aturans', function (Blueprint $table) {
+$table->id();
+$table->string('kode')->unique();
+$table->foreignId('user_id')->constrained()->restrictOnDelete();
+$table->foreignId('penyakit_id')->constrained()->restrictOnDelete();
+$table->integer('min_gejala_utama');
+$table->integer('min_gejala_lain');
+$table->boolean('wajib_g011')->default(false);
+$table->boolean('wajib_g012')->default(false);
+$table->timestamps();
+});
+
+Schema::create('konsultasis', function (Blueprint $table) {
+$table->id();
+$table->string('kode_konsultasi');
+$table->dateTime('tanggal');
+$table->string('nama_pasien')->nullable();
+$table->integer('umur');
+$table->string('jenis_kelamin');
+$table->text('catatan')->nullable();
+$table->timestamps();
+});
+
+Schema::create('konsultasi_gejalas', function (Blueprint $table) {
+$table->id();
+$table->foreignId('konsultasi_id')->constrained()->restrictOnDelete();
+$table->string('jawaban');
+$table->float('cf_user');
+$table->float('cf_evidence');
+$table->foreignId('gejala_id')->constrained()->restrictOnDelete();
+$table->timestamps();
+});
+
+Schema::create('konsultasi_hasils', function (Blueprint $table) {
+$table->id();
+$table->foreignId('konsultasi_id')->constrained()->restrictOnDelete();
+$table->float('cf_akhir');
+$table->text('kesimpulan');
+$table->foreignId('penyakit_id')->constrained()->restrictOnDelete();
+$table->timestamps();
+});
+
+Schema::create('bobot_penilaians', function (Blueprint $table) {
+$table->id();
+$table->string('certainty_term', 50);
+$table->float('cf');
+$table->foreignId('user_id')->constrained()->restrictOnDelete();
+$table->timestamps();
+});
+
+
+class Aturan extends Model
+{
+
+use HasFactory;
+
+protected $guarded = ['id'];
+protected $fillable = [
+'penyakit_id',
+'min_gejala_utama',
+'min_gejala_lain',
+'wajib_g011',
+'wajib_g012',
+'user_id'
+];
+
+public function penyakit()
+{
+return $this->belongsTo(Penyakit::class);
+}
+public function user()
+{
+return $this->belongsTo(User::class);
+}
+}
+
+
+class BobotPenilaian extends Model
+{
+use HasFactory;
+
+protected $guarded = ['id'];
+protected $fillable = ['certainty_term', 'cf', 'user_id'];
+
+public function user()
+{
+return $this->belongsTo(User::class);
+}
+}
+
+
+class Gejala extends Model
+{
+
+use HasFactory;
+
+protected $guarded = ['id'];
+protected $fillable = ['kode', 'nama_gejala', 'kategori', 'bobot_awal', 'user_id'];
+
+
+public function user()
+{
+return $this->belongsTo(User::class);
+}
+
+public function KonsultasiGejala()
+{
+return $this->hasMany(KonsultasiGejala::class);
+}
+}
+
+
+class Konsultasi extends Model
+{
+
+use HasFactory;
+
+protected $guarded = ['id'];
+protected $fillable = [
+'kode_konsultasi',
+'tanggal',
+'nama_pasien',
+'umur',
+'jenis_kelamin',
+'catatan'
+];
+
+public function KonsultasiGejala()
+{
+return $this->hasMany(KonsultasiGejala::class);
+}
+public function hasil()
+{
+return $this->hasOne(KonsultasiHasil::class);
+}
+}
+
+
+class KonsultasiGejala extends Model
+{
+use HasFactory;
+
+protected $guarded = ['id'];
+protected $fillable = ['konsultasi_id', 'gejala_id', 'jawaban', 'cf_user', 'cf_evidence'];
+
+public function konsultasi()
+{
+return $this->belongsTo(Konsultasi::class);
+}
+public function gejala()
+{
+return $this->belongsTo(Gejala::class);
+}
+}
+
+class KonsultasiHasil extends Model
+{
+use HasFactory;
+
+protected $guarded = ['id'];
+protected $fillable = ['konsultasi_id', 'penyakit_id', 'cf_akhir', 'kesimpulan'];
+
+public function konsultasi()
+{
+return $this->belongsTo(Konsultasi::class);
+}
+
+public function penyakit()
+{
+return $this->belongsTo(Penyakit::class);
+}
+}
+
+
+class Penyakit extends Model
+{
+
+use HasFactory;
+
+protected $guarded = ['id'];
+protected $fillable = ['nama_penyakit', 'user_id'];
+
+public function user()
+{
+return $this->belongsTo(User::class);
+}
+public function aturan()
+{
+return $this->hasMany(Aturan::class);
+}
+public function KonsultasiHasil()
+{
+return $this->hasMany(KonsultasiHasil::class);
+}
+}

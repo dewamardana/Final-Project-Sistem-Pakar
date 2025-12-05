@@ -12,27 +12,75 @@
           style="width: 0%"></div>
       </div>
 
-      <form action="" method="POST" id="quizForm" x-data="{ step: 1, total: {{ count($gejalas) }} }">
+      <form action="{{ route('kuisioner.submit') }}" method="POST" id="quizForm" x-data="{
+          step: 0,
+          total: {{ count($gejalas) }},
+          answered: {}
+      }">
         @csrf
 
-        <!-- Input Nama -->
-        <div class="mb-4" x-show="step === 0">
-          <label for="nama" class="block font-medium text-gray-700 dark:text-gray-300">Nama Anda</label>
-          <input type="text" name="nama" id="nama" required
-            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring">
+
+        <!-- ==========================
+             STEP 0 — IDENTITAS DIRI
+        ========================== -->
+        <div x-show="step === 0" x-transition>
+
+          <!-- Nama -->
+          <div class="mb-4">
+            <label class="block font-medium text-gray-700 dark:text-gray-300">Nama Anda (Opsional)</label>
+            <input type="text" name="nama_pasien" id="nama" placeholder="Opsional"
+              class="w-full px-4 py-2 border rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-gray-100">
+          </div>
+
+          <!-- Tanggal Lahir -->
+          <div class="mb-4">
+            <label class="block font-medium text-gray-700 dark:text-gray-300">Tanggal Lahir</label>
+            <input type="date" id="tanggal_lahir"
+              class="w-full px-4 py-2 border rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-gray-100">
+          </div>
+
+          <!-- Umur -->
+          <div class="mb-4">
+            <label class="block font-medium text-gray-700 dark:text-gray-300">Umur</label>
+            <input type="number" name="umur" id="umur"
+              class="w-full px-4 py-2 border rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-gray-100"
+              placeholder="Umur otomatis muncul setelah pilih tanggal lahir">
+          </div>
+
+          <!-- Jenis Kelamin -->
+          <div class="mb-4">
+            <label class="block font-medium text-gray-700 dark:text-gray-300">Jenis Kelamin</label>
+            <select name="jenis_kelamin"
+              class="w-full px-4 py-2 border rounded-lg bg-white dark:bg-slate-700 
+                   text-gray-900 dark:text-gray-100">
+              <option value="">-- Pilih --</option>
+              <option value="L">Laki-Laki</option>
+              <option value="P">Perempuan</option>
+            </select>
+          </div>
+
         </div>
 
-        <!-- Pertanyaan -->
+
+        <!-- ==========================
+             STEP GEJALA
+        ========================== -->
         @foreach ($gejalas as $i => $gejala)
           <div x-show="step === {{ $i + 1 }}" x-transition>
-            <p class="mb-2 font-medium">{{ $gejala->kode }} - {{ $gejala->gejala }}</p>
+            <p class="mb-4 font-medium text-gray-800 dark:text-gray-200">
+              Dalam beberapa minggu terakhir, apakah Anda mengalami
+              <span class="text-amber-600 dark:text-amber-400 font-semibold">
+                {{ strtolower($gejala->nama_gejala) }}
+              </span>?
+            </p>
+
             <div class="grid grid-cols-2 gap-3">
-              @foreach ($gejala->jawabans as $jawaban)
+              @foreach ($bobot_penilaians as $bobot)
                 <label class="cursor-pointer">
-                  <input type="radio" name="q{{ $gejala->id }}" value="{{ $jawaban->pivot->nilai }}"
-                    class="hidden peer" required>
-                  <div class="p-3 border rounded-lg peer-checked:bg-amber-500 peer-checked:text-white">
-                    {{ $jawaban->nama }}
+                  <input type="radio" name="gejala[{{ $gejala->id }}]" value="{{ $bobot->id }}" class="hidden peer"
+                    @change="answered[{{ $i + 1 }}] = true">
+                  <div class="p-3 border rounded-lg peer-checked:bg-amber-500 peer-checked:text-white transition">
+                    {{ $bobot->certainty_term }}
                   </div>
                 </label>
               @endforeach
@@ -40,21 +88,28 @@
           </div>
         @endforeach
 
-        <!-- Tombol Navigasi -->
+
+        <!-- ==========================
+             TOMBOL NAVIGASI
+        ========================== -->
         <div class="mt-6 flex justify-between">
-          <button type="button" x-show="step > 0" @click="step--"
+          <button type="button" x-show="step > 0"
+            @click="step--; document.getElementById('progress-bar').style.width = ((step / total) * 100) + '%';"
             class="px-4 py-2 rounded-lg bg-gray-400 hover:bg-gray-500 text-white">
             Kembali
           </button>
 
-          <button type="button" x-show="step < total"
+          <button type="button" x-show="step < total" :disabled="step > 0 && !answered[step]"
             @click="
-            // pastikan nama terisi jika step 0
-            if(step === 0 && !document.getElementById('nama').value){ alert('Isi nama terlebih dahulu!'); return; }
+            if(step === 0 && !document.getElementById('nama').value){
+                alert('Jika tidak mencantumkan nama, isi dengan -');
+                return;
+            }
             step++;
             document.getElementById('progress-bar').style.width = ((step / total) * 100) + '%';
-        "
-            class="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-white">
+          "
+            class="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-white transition"
+            :class="{ 'opacity-50 cursor-not-allowed': step > 0 && !answered[step] }">
             Lanjut
           </button>
 
@@ -63,14 +118,40 @@
             Selesai
           </button>
         </div>
-      </form>
 
+      </form>
 
     </div>
   </section>
 @endsection
 
+
 @section('script')
-  <!-- Alpine.js untuk interaktivitas -->
   <script src="//unpkg.com/alpinejs" defer></script>
+
+  <script>
+    // ==========================
+    // Hitung Umur Otomatis
+    // ==========================
+    document.addEventListener("DOMContentLoaded", function() {
+      const tgl = document.getElementById("tanggal_lahir");
+      const umur = document.getElementById("umur");
+
+      tgl.addEventListener("change", function() {
+        if (!this.value) return;
+
+        let lahir = new Date(this.value);
+        let now = new Date();
+
+        let usia = now.getFullYear() - lahir.getFullYear();
+        let m = now.getMonth() - lahir.getMonth();
+
+        if (m < 0 || (m === 0 && now.getDate() < lahir.getDate())) {
+          usia--;
+        }
+
+        umur.value = usia;
+      });
+    });
+  </script>
 @endsection

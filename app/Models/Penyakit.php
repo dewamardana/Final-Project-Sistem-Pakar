@@ -11,7 +11,7 @@ class Penyakit extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $fillable = ['nama_penyakit', 'user_id'];
+    protected $fillable = ['kode', 'nama_penyakit', 'user_id'];
 
     public function user()
     {

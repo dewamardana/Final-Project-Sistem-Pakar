@@ -9,7 +9,7 @@
       </svg>
     </button>
 
-    <span class="font-bold text-xl text-amber-500">MindCheck Dashboard</span>
+    <a href="/"><span class="font-bold text-xl text-amber-500">MindU</span></a>
 
     <!-- Profile -->
     <div class="flex items-center space-x-3">

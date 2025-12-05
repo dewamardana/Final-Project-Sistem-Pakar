@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KonsultasiHasil;
+use App\Models\Konsultasi;
 use Illuminate\Http\Request;
+use App\Models\KonsultasiHasil;
 
 class KonsultasiHasilController extends Controller
 {
@@ -12,8 +13,14 @@ class KonsultasiHasilController extends Controller
      */
     public function index()
     {
-        //
+        $konsultasi = Konsultasi::with('hasil.penyakit')->orderBy('tanggal', 'desc')->get();
+
+        return view('dashboard.konsultasi.index', [
+            'title' => 'Hasil Konsultasi | Dashboard',
+            'konsultasi' => $konsultasi,
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,7 +43,17 @@ class KonsultasiHasilController extends Controller
      */
     public function show(KonsultasiHasil $konsultasiHasil)
     {
-        //
+        $k = $konsultasiHasil->load([
+            'konsultasi.KonsultasiGejala.gejala',
+            'konsultasi.hasil.penyakit'
+        ]);
+
+        return view('dashboard.konsultasi.show', [
+            'title'      => 'Detail Konsultasi | Dashboard',
+            'konsultasi' => $k->konsultasi,
+            'gejalas'    => $k->konsultasi->KonsultasiGejala,
+            'hasil'      => $k->konsultasi->hasil,
+        ]);
     }
 
     /**
