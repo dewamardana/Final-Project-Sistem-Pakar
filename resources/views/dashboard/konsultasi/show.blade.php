@@ -57,6 +57,8 @@
             <th class="px-6 py-3">CF User</th>
             <th class="px-6 py-3">Bobot Awal</th>
             <th class="px-6 py-3">CF Evidence</th>
+            <th class="px-6 py-3">Threshold</th>
+            <th class="px-6 py-3">Accept</th>
           </tr>
         </thead>
 
@@ -77,6 +79,17 @@
               {{-- CF EVIDENCE --}}
               <td class="px-6 py-4 font-bold text-green-700 dark:text-green-300">
                 {{ $g->cf_evidence }}
+              </td>
+
+              {{-- Threshold --}}
+              <td class="px-6 py-4 font-semibold text-purple-700 dark:text-purple-300">
+                {{ $g->threshold }}
+              </td>
+
+              {{-- Accept Checkbox --}}
+              <td class="px-6 py-4">
+                <input type="checkbox" disabled @if ($g->accept) checked @endif
+                  class="w-5 h-5 text-green-500 focus:ring-green-400 border-gray-300 rounded">
               </td>
             </tr>
           @endforeach

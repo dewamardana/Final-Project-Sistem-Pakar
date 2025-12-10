@@ -17,8 +17,8 @@ class BobotPenilaianSeeder extends Seeder
 
         $data = [
             ['certainty_term' => 'Tidak', 'cf' => 0],
-            ['certainty_term' => 'Tidak Yakin', 'cf' => 0.4],
-            ['certainty_term' => 'Kadang Kadang', 'cf' => 0.6],
+            ['certainty_term' => 'Tidak Yakin', 'cf' => 0.2],
+            ['certainty_term' => 'Kadang Kadang', 'cf' => 0.5],
             ['certainty_term' => 'Hampir pasti', 'cf' => 0.8],
             ['certainty_term' => 'Pasti', 'cf' => 1],
         ];

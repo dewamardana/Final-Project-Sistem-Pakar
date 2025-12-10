@@ -18,6 +18,8 @@ return new class extends Migration
             $table->float('cf_user');
             $table->float('cf_evidence');
             $table->foreignId('gejala_id')->constrained()->restrictOnDelete();
+            $table->float('threshold')->default(0);
+            $table->boolean('accept')->default(0);
             $table->timestamps();
         });
     }

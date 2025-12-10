@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/dashboard/penyakit', PenyakitController::class);
     Route::resource('/dashboard/aturan', AturanController::class);
     Route::get('/dashboard/konsultasi', [KonsultasiHasilController::class, 'index'])->name('konsultasi.index');
-    Route::get('/konsultasi/{konsultasiHasil}', [KonsultasiHasilController::class, 'show'])->name('konsultasi.show');
+    Route::get('/konsultasi/{konsultasi}', [KonsultasiHasilController::class, 'show'])->name('konsultasi.show');
 });
 
 

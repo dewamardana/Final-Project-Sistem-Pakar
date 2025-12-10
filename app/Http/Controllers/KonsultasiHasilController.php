@@ -41,18 +41,18 @@ class KonsultasiHasilController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(KonsultasiHasil $konsultasiHasil)
+    public function show(Konsultasi $konsultasi)
     {
-        $k = $konsultasiHasil->load([
-            'konsultasi.KonsultasiGejala.gejala',
-            'konsultasi.hasil.penyakit'
+        $k = $konsultasi->load([
+            'KonsultasiGejala.gejala',
+            'hasil.penyakit'
         ]);
 
         return view('dashboard.konsultasi.show', [
             'title'      => 'Detail Konsultasi | Dashboard',
-            'konsultasi' => $k->konsultasi,
-            'gejalas'    => $k->konsultasi->KonsultasiGejala,
-            'hasil'      => $k->konsultasi->hasil,
+            'konsultasi' => $k,
+            'gejalas'    => $k->KonsultasiGejala,
+            'hasil'      => $k->hasil,
         ]);
     }
 

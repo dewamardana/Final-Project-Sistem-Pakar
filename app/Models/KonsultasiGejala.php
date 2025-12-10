@@ -10,7 +10,7 @@ class KonsultasiGejala extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $fillable = ['konsultasi_id', 'gejala_id', 'jawaban', 'cf_user', 'cf_evidence'];
+    protected $fillable = ['konsultasi_id', 'gejala_id', 'jawaban', 'cf_user', 'cf_evidence', 'threshold', 'accept'];
 
     public function konsultasi()
     {

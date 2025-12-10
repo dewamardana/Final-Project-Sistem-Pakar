@@ -83,6 +83,13 @@ class HomepageController extends Controller
         $jumlahLain = 0;
         $gejalaBerat = [];
 
+        // Update threshold & accept pada setiap gejala yang sudah disimpan
+        foreach ($gejalaKonsultasi as $kg) {
+            $kg->threshold = $cfThreshold;
+            $kg->accept = $kg->cf_user >= $cfThreshold ? true : false;
+            $kg->save();
+        }
+
         foreach ($gejalaKonsultasi as $kg) {
             if ($kg->gejala->kategori === 'utama' && $kg->cf_user >= $cfThreshold) $jumlahUtama++;
             if ($kg->gejala->kategori === 'lain' && $kg->cf_user >= $cfThreshold) $jumlahLain++;
@@ -105,10 +112,19 @@ class HomepageController extends Controller
             $statusAturan[$aturan->id] = $cocok;
         }
 
-        // Ambil aturan yang terpenuhi pertama kali
-        $aturanTerpenuhi = $aturans->first(function ($aturan) use ($statusAturan) {
-            return $statusAturan[$aturan->id] === true;
-        });
+        // Ambil rule yang benar-benar cocok & paling spesifik
+        $aturanTerpenuhi = $aturans
+            ->filter(function ($aturan) use ($statusAturan) {
+                return $statusAturan[$aturan->id] === true;
+            })
+            ->sortByDesc(function ($aturan) {
+                return ($aturan->min_gejala_utama * 10) +
+                    ($aturan->min_gejala_lain * 5) +
+                    ($aturan->wajib_g011 ? 2 : 0) +
+                    ($aturan->wajib_g012 ? 2 : 0);
+            })
+            ->first();
+
 
         if (!$aturanTerpenuhi) {
             $penyakit = Penyakit::where('nama_penyakit', 'Normal')->first();
