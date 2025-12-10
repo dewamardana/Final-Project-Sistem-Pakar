@@ -78,7 +78,7 @@ class HomepageController extends Controller
         $gejalaKonsultasi = $konsultasi->KonsultasiGejala;
 
         // Hitung kondisi rules
-        $cfThreshold = 0.5;
+        $cfThreshold = 0.4;
         $jumlahUtama = 0;
         $jumlahLain = 0;
         $gejalaBerat = [];
@@ -158,25 +158,30 @@ class HomepageController extends Controller
                 . round($cfAkhir, 4)
                 . " (" . round($cfAkhir * 100, 2) . "%).";
         } else {
+            // ------------------ JIKA ADA ATURAN TERPENUHI ------------------
             $penyakit = $aturanTerpenuhi->penyakit;
-            // Ambil semua cf_evidence dari gejala yang dipilih user
-            $cfList = $gejalaKonsultasi->pluck('cf_evidence')->filter(function ($cf) {
-                return $cf > 0;
-            })->values();
 
-            // Jika tidak ada gejala bernilai positif
+            // *** AMBIL HANYA CF_EVIDENCE DARI GEJALA YANG ACCEPT = TRUE ***
+            $cfList = $gejalaKonsultasi
+                ->where('accept', 1)                  // hanya gejala yang lolos threshold
+                ->pluck('cf_evidence')               // ambil cf_evidence
+                ->filter(function ($cf) {
+                    return $cf > 0;
+                })
+                ->values();
+
             if ($cfList->isEmpty()) {
                 $cfAkhir = 0;
             } else {
-                // Mulai dari CF pertama
+                // mulai dari CF pertama
                 $cfAkhir = $cfList[0];
 
-                // Gabungkan satu per satu menggunakan rumus:
-                // CFbaru = CFlama + CFg * (1 - CFlama)
+                // gabungkan satu per satu: CFbaru = CFlama + CFg * (1 - CFlama)
                 for ($i = 1; $i < count($cfList); $i++) {
                     $cfAkhir = $cfAkhir + ($cfList[$i] * (1 - $cfAkhir));
                 }
             }
+
             $kesimpulan = "Tingkat keyakinan terhadap {$penyakit->nama_penyakit} adalah "
                 . round($cfAkhir, 4)
                 . " (" . round($cfAkhir * 100, 2) . "%).";

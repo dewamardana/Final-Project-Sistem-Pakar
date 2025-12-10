@@ -74,7 +74,7 @@ class GejalaController extends Controller
     {
         $request->validate([
             'kode' => 'required|unique:gejalas,kode,' . $gejala->id,
-            'nama_gejala' => 'required|unique:gejalas,nama_gejala',
+            'nama_gejala' => 'required|unique:gejalas,nama_gejala' . $gejala->id,
             'kategori' => 'required|in:utama,lain,berat',
             'bobot_awal' => 'required|numeric'
         ]);
