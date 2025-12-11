@@ -16,11 +16,11 @@ class BobotPenilaianSeeder extends Seeder
         $user = 1;
 
         $data = [
-            ['certainty_term' => 'Tidak', 'cf' => 0],
-            ['certainty_term' => 'Tidak Yakin', 'cf' => 0.2],
+            ['certainty_term' => 'Tidak Pernah', 'cf' => 0],
+            ['certainty_term' => 'Jarang', 'cf' => 0.2],
             ['certainty_term' => 'Kadang Kadang', 'cf' => 0.4],
-            ['certainty_term' => 'Hampir pasti', 'cf' => 0.7],
-            ['certainty_term' => 'Pasti', 'cf' => 0.9],
+            ['certainty_term' => 'Sering', 'cf' => 0.7],
+            ['certainty_term' => 'Selalu', 'cf' => 0.9],
         ];
 
         foreach ($data as $item) {

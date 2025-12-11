@@ -17,7 +17,7 @@ class GejalaSeeder extends Seeder
 
         $data = [
             // Gejala Utama
-            ['kode' => 'G001', 'nama_gejala' => 'Afek depresif', 'kategori' => 'utama', 'bobot_awal' => 0.60],
+            ['kode' => 'G001', 'nama_gejala' => 'Perasaan sedih atau tertekan', 'kategori' => 'utama', 'bobot_awal' => 0.60],
             ['kode' => 'G002', 'nama_gejala' => 'Kehilangan minat dan kegembiraan', 'kategori' => 'utama', 'bobot_awal' => 0.65],
             ['kode' => 'G003', 'nama_gejala' => 'Berkurangnya energi dan mudah lelah', 'kategori' => 'utama', 'bobot_awal' => 0.60],
 
@@ -31,8 +31,8 @@ class GejalaSeeder extends Seeder
             ['kode' => 'G010', 'nama_gejala' => 'Nafsu makan berkurang', 'kategori' => 'lain', 'bobot_awal' => 0.35],
 
             // Gejala Berat
-            ['kode' => 'G011', 'nama_gejala' => 'Agitasi / retardasi psikomotor', 'kategori' => 'berat', 'bobot_awal' => 0.55],
-            ['kode' => 'G012', 'nama_gejala' => 'Waham, halusinasi, stupor depresif', 'kategori' => 'berat', 'bobot_awal' => 0.70],
+            ['kode' => 'G011', 'nama_gejala' => 'Gelisah atau justru bergerak lebih lambat dari biasanya', 'kategori' => 'berat', 'bobot_awal' => 0.55],
+            ['kode' => 'G012', 'nama_gejala' => 'Gejala psikosis atau stupor, seperti waham, halusinasi, atau kondisi sangat diam hingga sulit berinteraksi', 'kategori' => 'berat', 'bobot_awal' => 0.70],
         ];
 
         foreach ($data as $item) {
