@@ -3,7 +3,7 @@
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="/" class="flex items-center space-x-2">
       <img src="{{ asset('image/mindCheck.png') }}" alt="Mental Health" class="mx-2 my-auto drop-shadow-lg w-10 h-12" />
-      <span class="text-amber-500 text-xl font-bold">MindCheck</span>
+      <span class="text-amber-500 text-xl font-bold">Mind-U</span>
     </a>
 
     <div class="hidden md:flex space-x-6">
