@@ -1,21 +1,21 @@
 @extends('homepage.layout.main')
 
 @section('content')
-  <section class="py-20 bg-gray-50 dark:bg-slate-900 min-h-screen transition-colors">
+  <section class="md:py-16 py-6 bg-gray-50 dark:bg-slate-900 min-h-screen transition-colors">
     <div class="max-w-3xl mx-auto px-6">
 
-      <!-- Title -->
-      <h2 class="text-4xl font-bold text-center mb-10 flex justify-center items-center gap-3">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-amber-500" fill="none" viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        Hasil Pemeriksaan Depresi
-      </h2>
-
+      
       <!-- Card -->
       <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-8 transition">
+        <!-- Title -->
+        <h2 class="text-3xl md:text-4xl font-semibold text-center mb-10 flex flex-col md:flex-row justify-center items-center gap-3">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-amber-500" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Hasil Pemeriksaan Depresi
+        </h2>
 
         <!-- Header -->
         <div class="mb-6">

@@ -2,7 +2,7 @@
 
 @section('content')
   <!-- Hero Section -->
-  <section class="relative h-screen max-w-screen-xl mx-auto  flex justify-center items-center -translate-y-14 px-6">
+  <section id="utama" class="relative h-screen max-w-screen-xl mx-auto  flex justify-center items-center -translate-y-14 px-6">
     <div class="flex flex-col md:flex-row justify-center items-center gap-12">
       
       <img src="{{ asset('image/LogoDashboard.svg') }}" alt="" class="md:w-fit w-1/2">
@@ -44,7 +44,7 @@
     </div>
   </section>
 
-  <section class="max-w-screen-xl mx-auto flex flex-col items-center justify-center gap-8 px-6 mt-30 md:mt-60 scroll-mt-28">
+  <section id="artikel" class="max-w-screen-xl mx-auto flex flex-col items-center justify-center gap-8 px-6 mt-30 md:mt-60 scroll-mt-28">
     <h2 class="text-4xl text-primary font-semibold">Artikel Kesehatan <span class="text-white">Untukmu.</span></h2>
     {{-- card section --}}
     <div class="w-full  overflow-x-scroll no-scrollbar" id="slider">
@@ -181,7 +181,7 @@
   
 
   <!-- FAQ -->
-  <section class="max-w-screen-xl mx-auto flex flex-col items-center justify-center gap-8 px-6 mt-20 md:mt-40 scroll-mt-28 mb-20">
+  <section  id="faq" class="max-w-screen-xl mx-auto flex flex-col items-center justify-center gap-8 px-6 mt-20 md:mt-40 scroll-mt-28 mb-20">
     <h2 class="text-4xl text-primary font-semibold">Frequently <span class="text-white">and</span> Answer.</h2>
     <!-- ACCORDION -->
     <div x-data="{ open: null }" class="flex flex-col gap-6 w-full ">
