@@ -90,7 +90,7 @@
 
 
         <!-- ==========================
-             TOMBOL NAVIGASI
+        TOMBOL NAVIGASI
         ========================== -->
         <div class="mt-6 flex justify-between">
           <button type="button" x-show="step > 0"

@@ -2,8 +2,7 @@
 
 @section('content')
   <!-- Hero Section -->
-  <section class="relative bg-cover bg-center h-[90vh]"
-    style="background-image: url('https://source.unsplash.com/1600x900/?calm,psychology')">
+  <section class="relative bg-cover bg-center h-[90vh]">
     <div class="absolute inset-0 bg-white bg-opacity-70 dark:bg-slate-900 dark:bg-opacity-70 transition-colors"></div>
 
     <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 mt-12 animate-fadeIn">

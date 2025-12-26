@@ -16,7 +16,7 @@
   </style>
 </head>
 
-<body class="bg-white text-gray-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-500">
+<body class="bg-secondary text-white duration-500">
   @include('homepage.layout.header')
   @yield('content')
   @yield('script')
@@ -24,7 +24,7 @@
   <!-- Script Flowbite -->
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 
-  <!-- Dark Mode Toggle Script -->
+  {{-- <!-- Dark Mode Toggle Script -->
   <script>
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
@@ -49,7 +49,7 @@
         themeToggle.textContent = '🌞';
       }
     });
-  </script>
+  </script> --}}
 </body>
 
 </html>
