@@ -1,14 +1,14 @@
 @extends('homepage.layout.main')
 @section('content')
-  <section class="min-h-screen bg-gray-50 dark:bg-slate-900 py-16 transition-colors">
-    <div class="max-w-2xl mx-auto bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-8 relative overflow-hidden">
-      <h2 class="text-2xl font-bold text-center mb-6 text-gray-900 dark:text-slate-100">
-        Kuesioner Kesehatan Mental
+  <section class=" bg-secondary py-6 md:py-16 px-6">
+    <div class="max-w-screen-xl mx-auto bg-third rounded-2xl shadow-lg p-8 relative overflow-hidden">
+      <h2 class="text-2xl md:text-4xl font-bold text-center mb-6 text-white">
+        Kuesioner Tingkat Depresi
       </h2>
 
       <!-- Progress Bar -->
       <div class="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5 mb-6">
-        <div id="progress-bar" class="bg-amber-500 h-2.5 rounded-full transition-all duration-500 ease-in-out"
+        <div id="progress-bar" class="bg-accent-blue h-2.5 rounded-full transition-all duration-500 ease-in-out"
           style="width: 0%"></div>
       </div>
 
@@ -21,38 +21,37 @@
 
 
         <!-- ==========================
-             STEP 0 — IDENTITAS DIRI
+        STEP 0 — IDENTITAS DIRI
         ========================== -->
         <div x-show="step === 0" x-transition>
 
           <!-- Nama -->
           <div class="mb-4">
-            <label class="block font-medium text-gray-700 dark:text-gray-300">Nama Anda (Opsional)</label>
+            <label class="text-white font-semibold">Nama Anda (Opsional)</label>
             <input type="text" name="nama_pasien" id="nama" placeholder="Opsional"
-              class="w-full px-4 py-2 border rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-gray-100">
+              class="w-full px-6 py-3 rounded-xl border border-neutral-gray bg-transparent focus:ring-2 focus:ring-accent-blue focus:border-transparent text-white mt-2">
           </div>
 
           <!-- Tanggal Lahir -->
           <div class="mb-4">
-            <label class="block font-medium text-gray-700 dark:text-gray-300">Tanggal Lahir</label>
+            <label class="text-white font-semibold">Tanggal Lahir</label>
             <input type="date" id="tanggal_lahir"
-              class="w-full px-4 py-2 border rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-gray-100">
+              class="w-full px-6 py-3 rounded-xl border border-neutral-gray bg-transparent focus:ring-2 focus:ring-accent-blue focus:border-transparent text-white mt-2">
           </div>
 
           <!-- Umur -->
           <div class="mb-4">
-            <label class="block font-medium text-gray-700 dark:text-gray-300">Umur</label>
+            <label class="text-white font-semibold">Umur</label>
             <input type="number" name="umur" id="umur"
-              class="w-full px-4 py-2 border rounded-lg bg-white dark:bg-slate-700 text-gray-900 dark:text-gray-100"
+              class="w-full px-6 py-3 rounded-xl border border-neutral-gray bg-transparent focus:ring-2 focus:ring-accent-blue focus:border-transparent text-white mt-2" readonly
               placeholder="Umur otomatis muncul setelah pilih tanggal lahir">
           </div>
 
           <!-- Jenis Kelamin -->
           <div class="mb-4">
-            <label class="block font-medium text-gray-700 dark:text-gray-300">Jenis Kelamin</label>
+            <label class="text-white font-semibold">Jenis Kelamin</label>
             <select name="jenis_kelamin"
-              class="w-full px-4 py-2 border rounded-lg bg-white dark:bg-slate-700 
-                   text-gray-900 dark:text-gray-100">
+              class="w-full px-6 py-3 rounded-xl border border-neutral-gray bg-transparent focus:ring-2 focus:ring-accent-blue focus:border-transparent text-white focus:bg-third mt-2">
               <option value="">-- Pilih --</option>
               <option value="L">Laki-Laki</option>
               <option value="P">Perempuan</option>
@@ -63,23 +62,32 @@
 
 
         <!-- ==========================
-             STEP GEJALA
+        STEP GEJALA
         ========================== -->
         @foreach ($gejalas as $i => $gejala)
           <div x-show="step === {{ $i + 1 }}" x-transition>
-            <p class="mb-4 font-medium text-gray-800 dark:text-gray-200">
-              Dalam beberapa minggu terakhir, apakah Anda mengalami
-              <span class="text-amber-600 dark:text-amber-400 font-semibold">
-                {{ strtolower($gejala->nama_gejala) }}
-              </span>?
-            </p>
+            <div class="flex flex-col md:flex-row md:items-stretch items-center gap-4">
+              <p class="text-4xl my-auto">{{ $gejala->kode }}</p>
 
-            <div class="grid grid-cols-2 gap-3">
+              <hr class="bg-white border-0
+                        w-full h-px
+                        md:w-px md:h-auto">
+
+              <p class="font-medium text-gray-800 dark:text-gray-200 my-auto">
+                Dalam beberapa minggu terakhir, apakah Anda mengalami
+                <span class="text-amber-600 dark:text-amber-400 font-semibold">
+                  {{ strtolower($gejala->nama_gejala) }}
+                </span>?
+              </p>
+            </div>
+
+
+            <div class="grid md:grid-cols-2 grid-cols-1 gap-3 mt-6">
               @foreach ($bobot_penilaians as $bobot)
                 <label class="cursor-pointer">
                   <input type="radio" name="gejala[{{ $gejala->id }}]" value="{{ $bobot->id }}" class="hidden peer"
                     @change="answered[{{ $i + 1 }}] = true">
-                  <div class="p-3 border rounded-lg peer-checked:bg-amber-500 peer-checked:text-white transition">
+                  <div class="p-3 border rounded-xl peer-checked:bg-primary peer-checked:text-white transition">
                     {{ $bobot->certainty_term }}
                   </div>
                 </label>
@@ -95,7 +103,7 @@
         <div class="mt-6 flex justify-between">
           <button type="button" x-show="step > 0"
             @click="step--; document.getElementById('progress-bar').style.width = ((step / total) * 100) + '%';"
-            class="px-4 py-2 rounded-lg bg-gray-400 hover:bg-gray-500 text-white">
+            class="px-4 py-2 rounded-lg bg-gray-400 hover:bg-gray-500 text-white font-semibold">
             Kembali
           </button>
 
@@ -108,13 +116,13 @@
             step++;
             document.getElementById('progress-bar').style.width = ((step / total) * 100) + '%';
           "
-            class="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-white transition"
+            class="px-4 py-2 rounded-lg bg-primary hover:bg-amber-600 text-white transition font-semibold"
             :class="{ 'opacity-50 cursor-not-allowed': step > 0 && !answered[step] }">
-            Lanjut
+            Selanjutnya
           </button>
 
           <button type="submit" x-show="step === total"
-            class="px-4 py-2 rounded-lg bg-green-500 hover:bg-green-600 text-white">
+            class="px-4 py-2 rounded-lg bg-accent-mint hover:bg-green-600 text-white font-semibold">
             Selesai
           </button>
         </div>
