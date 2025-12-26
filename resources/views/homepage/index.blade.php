@@ -2,178 +2,294 @@
 
 @section('content')
   <!-- Hero Section -->
-  <section class="relative bg-cover bg-center h-[90vh]">
-    <div class="absolute inset-0 bg-white bg-opacity-70 dark:bg-slate-900 dark:bg-opacity-70 transition-colors"></div>
+  <section class="relative h-screen max-w-screen-xl mx-auto  flex justify-center items-center -translate-y-14 px-6">
+    <div class="flex flex-col md:flex-row justify-center items-center gap-12">
+      
+      <img src="{{ asset('image/LogoDashboard.svg') }}" alt="" class="md:w-fit w-1/2">
 
-    <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 mt-12 animate-fadeIn">
-      <h1 class="text-4xl md:text-6xl font-bold mb-6">
-        Kenali <span class="text-amber-500">Kesehatan Mentalmu</span>
-      </h1>
-      <p class="text-lg text-gray-600 dark:text-slate-300 mb-8 max-w-2xl">
-        Ikuti kuesioner sederhana untuk mendapatkan gambaran awal kondisi emosimu.
-      </p>
-
-      <a href="{{ route('kuisioner') }}"
-        class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold transition hover:scale-105 shadow-lg">
-        Mulai Tes Sekarang
-      </a>
+      <div class="flex flex-col md:w-1/2 justify-center items-center md:items-start gap-6 text-center md:text-left">
+        <h1 class="text-4xl md:text-5xl">
+          Kenali <span class="font-bold">Pikiran</span>,<br>
+          Kenali <span class="font-bold text-primary">Kondisimu</span>
+        </h1>
+        <p>
+          <span class="font-bold">Mind-U</span> adalah aplikasi sederhana untuk membantu mahasiswa mengenali kondisi mentalnya melalui
+          kuesioner singkat dan mendapatkan gambaran awal tingkat stres atau depresi.
+        </p>
+        <a href="{{ route('kuisioner') }}" class="text-white bg-primary hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-semibold rounded-xl textbase px-5 py-3 shadow-lg w-fit">
+          Tes Depresi
+        </a>
+      </div>
+      
     </div>
   </section>
+
 
   <!-- Fitur Utama -->
-  <section class="py-20 bg-gray-50 dark:bg-slate-800 transition-colors">
-    <div class="max-w-6xl mx-auto px-6 text-center mb-12">
-      <h2 class="text-3xl font-bold flex justify-center items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-amber-500" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-        </svg>
-        Fitur Utama
-      </h2>
-    </div>
-
-    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-      <!-- Card -->
-      <div class="p-8 bg-white dark:bg-slate-900 rounded-2xl shadow-lg hover:shadow-xl transition hover:-translate-y-1">
-        <h3 class="text-xl font-semibold mb-3">Tes Kondisi Mental</h3>
-        <p class="text-gray-600 dark:text-slate-300">
-          Kuesioner singkat berdasarkan indikator psikologi standar.
-        </p>
+  <section class="max-w-screen-xl mx-auto flex flex-col items-center justify-center gap-8 px-6">
+    <h2 class="text-4xl text-primary font-semibold">Mind-U</h2>
+    <div class="flex flex-col md:flex-row gap-8 max-w-screen-xl items-center justify-center">
+      <div class="flex flex-col items-center justify-center md:gap-6 gap-2">
+        <h3 class="text-3xl font-semibold">Kasus depresi</h3>
+        <p class="md:text-[64px] text-4xl"><span class="font-bold text-primary">34,9%</span> / <span class="font-bold text-primary">15,5 juta</span></p>
+        <h4 class="text-2xl font-semibold">Remaja Indonesia</h4>
       </div>
-
-      <div class="p-8 bg-white dark:bg-slate-900 rounded-2xl shadow-lg hover:shadow-xl transition hover:-translate-y-1">
-        <h3 class="text-xl font-semibold mb-3">Hasil Analisis Cepat</h3>
-        <p class="text-gray-600 dark:text-slate-300">
-          Dapatkan gambaran awal tingkat stres atau depresi dalam hitungan detik.
-        </p>
-      </div>
-
-      <div class="p-8 bg-white dark:bg-slate-900 rounded-2xl shadow-lg hover:shadow-xl transition hover:-translate-y-1">
-        <h3 class="text-xl font-semibold mb-3">Rekomendasi Langkah Awal</h3>
-        <p class="text-gray-600 dark:text-slate-300">
-          Saran ringan dan sehat untuk penanganan dini.
-        </p>
+      <hr class="w-full h-px md:w-px md:h-60 bg-white border-0">
+      <div class="flex flex-col gap-6 md:max-w-1/2 items-center md:items-start">
+        <p class="text-justify">(I-NAMHS) yang dirilis pada tahun 2022 menunjukkan fakta bahwa satu dari tiga remaja Indonesia (34,9%) didiagnosis memiliki masalah kesehatan mental dalam 12 bulan terakhir Angka ini setara dengan 15,5 juta remaja (I-NAMHS, 2022). Cek kondisimu sekarang melalui tes kesehatan dengan menekan tombol dibawah ini!</p>
+        <a href="{{ route('kuisioner') }}" class="text-white bg-primary hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-semibold rounded-xl textbase px-5 py-3 shadow-lg w-fit">
+          Tes Depresi
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Tentang Aplikasi -->
-  <section class="py-20 bg-white dark:bg-slate-900 transition-colors">
-    <div class="max-w-6xl mx-auto gap-10 items-center px-6 text-center">
-      <h2 class="text-3xl font-bold mb-4">Tentang Aplikasi Ini</h2>
-      <p class="text-gray-700 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
-        MindCheck dibuat sebagai alat bantu bagi mahasiswa untuk menyadari tingkat depresi atau stres
-        yang mungkin dialami. Hasil bukan diagnosis medis, melainkan sebagai langkah awal untuk mencari
-        pertolongan yang tepat.
-      </p>
-    </div>
-  </section>
-
-  <!-- Statistik / Highlight -->
-  <section class="py-20 bg-gray-100 dark:bg-slate-800 transition-colors">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 text-center">
-      <div>
-        <h3 class="text-4xl font-bold text-amber-500">+1200</h3>
-        <p class="text-gray-600 dark:text-slate-300">Mahasiswa Telah Menggunakan</p>
-      </div>
-      <div>
-        <h3 class="text-4xl font-bold text-amber-500">98%</h3>
-        <p class="text-gray-600 dark:text-slate-300">Merasa Terbantu</p>
-      </div>
-      <div>
-        <h3 class="text-4xl font-bold text-amber-500">5 Menit</h3>
-        <p class="text-gray-600 dark:text-slate-300">Durasi Tes Rata-rata</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Artikel Populer -->
-  <section class="py-20 bg-white dark:bg-slate-900 transition-colors">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-12 flex justify-center items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-amber-500" fill="none" viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M12 8c-1.656 0-3-1.343-3-3S10.344 2 12 2s3 1.343 3 3-1.344 3-3 3zm0 4c2.21 0 4 1.79 4 4v6H8v-6c0-2.21 1.79-4 4-4z" />
-        </svg>
-        Artikel Populer
-      </h2>
-
-      <div class="grid gap-8 md:grid-cols-3">
-
-        @foreach ([['img' => 'relax,meditation', 'judul' => '5 Cara Mengurangi Stres', 'text' => 'Tips sederhana agar tetap tenang dalam kesibukan.'], ['img' => 'mental,therapy', 'judul' => 'Kesehatan Mental vs Fisik', 'text' => 'Pentingnya menjaga mental sama seperti fisik.'], ['img' => 'support,community', 'judul' => 'Dukungan Sosial itu Penting', 'text' => 'Teman & keluarga membantu menjaga kestabilan emosi.']] as $a)
-          <div
-            class="bg-gray-50 dark:bg-slate-800 rounded-xl shadow-lg hover:shadow-xl transition hover:-translate-y-1 overflow-hidden">
-            <img src="https://source.unsplash.com/600x400/?{{ $a['img'] }}" class="w-full h-48 object-cover">
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">{{ $a['judul'] }}</h3>
-              <p class="text-gray-600 dark:text-slate-400 mb-4">{{ $a['text'] }}</p>
-              <a href="#" class="text-amber-500 font-semibold hover:underline">Baca Selengkapnya →</a>
+  <section class="max-w-screen-xl mx-auto flex flex-col items-center justify-center gap-8 px-6 mt-30 md:mt-60 scroll-mt-28">
+    <h2 class="text-4xl text-primary font-semibold">Artikel Kesehatan <span class="text-white">Untukmu.</span></h2>
+    {{-- card section --}}
+    <div class="w-full  overflow-x-scroll no-scrollbar" id="slider">
+      <div class="flex flex-nowrap gap-6">
+        {{-- card --}}
+        <div class="h-[400px] w-[302px] md:h-[500px] md:w-[402px] bg-[#1D293D] rounded-2xl relative shrink-0">
+          <div class="relative h-[145px] md:h-[245px] overflow-hidden rounded-t-2xl">
+            <img src="{{ asset('image/artikel/defaultArtikel.png') }}" alt="" class="absolute inset-0 z-10">
+            <div class="bg-linear-to-t from-black/70 to-black/0 z-20 relative h-full">
             </div>
           </div>
-        @endforeach
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimoni -->
-  <section class="py-20 bg-gray-100 dark:bg-slate-800 transition-colors">
-    <div class="max-w-6xl mx-auto text-center px-6">
-      <h2 class="text-3xl font-bold mb-8">Apa Kata Pengguna</h2>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        @foreach ([['text' => '“Tesnya singkat tapi membuka mata saya...”', 'name' => 'Rina, 21 tahun'], ['text' => '“Mudah dipahami dan membuat saya sadar...”', 'name' => 'Andi, 23 tahun'], ['text' => '“Bermanfaat untuk mahasiswa yang sering stres.”', 'name' => 'Siti, 20 tahun']] as $t)
-          <div class="p-8 bg-white dark:bg-slate-900 rounded-2xl shadow-lg">
-            <p class="italic text-gray-600 dark:text-slate-300 mb-4">{{ $t['text'] }}</p>
-            <h4 class="font-semibold">— {{ $t['name'] }}</h4>
+          <div class="px-6 py-3 flex flex-col gap-2 ">
+            <h3 class="text-xl text-white font-semibold">Mencegah terjadinya depresi</h3>
+            <p class="text-neutral-gray line-clamp-4 md:line-clamp-6 md:text-justify" >Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.</p>
+            <a href="https://www.youtube.com/watch?v=8m5br9NdLcA&list=RDMM8m5br9NdLcA&start_radio=1" target="_blank" class="absolute bottom-6 right-6">
+              <div class="flex gap-2 items-center text-white hover:underline hover:underline-offset-4 hover:text-primary ">
+                <p>Lihat artikel</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" viewBox="0 0 17 17">
+                  <circle cx="8.5" cy="8.5" r="8.5" fill="#2E4161"/>
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m5.33 11.187 6.049-6.08m.313 4.345-.026-4.634-4.634-.002"/>
+                </svg>
+              </div>
+            </a>
           </div>
-        @endforeach
-      </div>
+        </div>
+        {{-- end card --}}
+        {{-- card --}}
+        <div class="h-[400px] w-[302px] md:h-[500px] md:w-[402px] bg-[#1D293D] rounded-2xl relative shrink-0">
+          <div class="relative h-[145px] md:h-[245px] overflow-hidden rounded-t-2xl">
+            <img src="{{ asset('image/artikel/defaultArtikel.png') }}" alt="" class="absolute inset-0 z-10">
+            <div class="bg-linear-to-t from-black/70 to-black/0 z-20 relative h-full">
+            </div>
+          </div>
+          <div class="px-6 py-3 flex flex-col gap-2 ">
+            <h3 class="text-xl text-white font-semibold">Mencegah terjadinya depresi</h3>
+            <p class="text-neutral-gray line-clamp-4 md:line-clamp-6 md:text-justify" >Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.</p>
+            <a href="https://www.youtube.com/watch?v=8m5br9NdLcA&list=RDMM8m5br9NdLcA&start_radio=1" target="_blank" class="absolute bottom-6 right-6">
+              <div class="flex gap-2 items-center text-white hover:underline hover:underline-offset-4 hover:text-primary ">
+                <p>Lihat artikel</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" viewBox="0 0 17 17">
+                  <circle cx="8.5" cy="8.5" r="8.5" fill="#2E4161"/>
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m5.33 11.187 6.049-6.08m.313 4.345-.026-4.634-4.634-.002"/>
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+        {{-- end card --}}
+        {{-- card --}}
+        <div class="h-[400px] w-[302px] md:h-[500px] md:w-[402px] bg-[#1D293D] rounded-2xl relative shrink-0">
+          <div class="relative h-[145px] md:h-[245px] overflow-hidden rounded-t-2xl">
+            <img src="{{ asset('image/artikel/defaultArtikel.png') }}" alt="" class="absolute inset-0 z-10">
+            <div class="bg-linear-to-t from-black/70 to-black/0 z-20 relative h-full">
+            </div>
+          </div>
+          <div class="px-6 py-3 flex flex-col gap-2 ">
+            <h3 class="text-xl text-white font-semibold">Mencegah terjadinya depresi</h3>
+            <p class="text-neutral-gray line-clamp-4 md:line-clamp-6 md:text-justify" >Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.</p>
+            <a href="https://www.youtube.com/watch?v=8m5br9NdLcA&list=RDMM8m5br9NdLcA&start_radio=1" target="_blank" class="absolute bottom-6 right-6">
+              <div class="flex gap-2 items-center text-white hover:underline hover:underline-offset-4 hover:text-primary ">
+                <p>Lihat artikel</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" viewBox="0 0 17 17">
+                  <circle cx="8.5" cy="8.5" r="8.5" fill="#2E4161"/>
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m5.33 11.187 6.049-6.08m.313 4.345-.026-4.634-4.634-.002"/>
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+        {{-- end card --}}
+        {{-- card --}}
+        <div class="h-[400px] w-[302px] md:h-[500px] md:w-[402px] bg-[#1D293D] rounded-2xl relative shrink-0">
+          <div class="relative h-[145px] md:h-[245px] overflow-hidden rounded-t-2xl">
+            <img src="{{ asset('image/artikel/defaultArtikel.png') }}" alt="" class="absolute inset-0 z-10">
+            <div class="bg-linear-to-t from-black/70 to-black/0 z-20 relative h-full">
+            </div>
+          </div>
+          <div class="px-6 py-3 flex flex-col gap-2 ">
+            <h3 class="text-xl text-white font-semibold">Mencegah terjadinya depresi</h3>
+            <p class="text-neutral-gray line-clamp-4 md:line-clamp-6 md:text-justify" >Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.</p>
+            <a href="https://www.youtube.com/watch?v=8m5br9NdLcA&list=RDMM8m5br9NdLcA&start_radio=1" target="_blank" class="absolute bottom-6 right-6">
+              <div class="flex gap-2 items-center text-white hover:underline hover:underline-offset-4 hover:text-primary ">
+                <p>Lihat artikel</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" viewBox="0 0 17 17">
+                  <circle cx="8.5" cy="8.5" r="8.5" fill="#2E4161"/>
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m5.33 11.187 6.049-6.08m.313 4.345-.026-4.634-4.634-.002"/>
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+        {{-- end card --}}
+        {{-- card --}}
+        <div class="h-[400px] w-[302px] md:h-[500px] md:w-[402px] bg-[#1D293D] rounded-2xl relative shrink-0">
+          <div class="relative h-[145px] md:h-[245px] overflow-hidden rounded-t-2xl">
+            <img src="{{ asset('image/artikel/defaultArtikel.png') }}" alt="" class="absolute inset-0 z-10">
+            <div class="bg-linear-to-t from-black/70 to-black/0 z-20 relative h-full">
+            </div>
+          </div>
+          <div class="px-6 py-3 flex flex-col gap-2 ">
+            <h3 class="text-xl text-white font-semibold">Mencegah terjadinya depresi</h3>
+            <p class="text-neutral-gray line-clamp-4 md:line-clamp-6 md:text-justify" >Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.</p>
+            <a href="https://www.youtube.com/watch?v=8m5br9NdLcA&list=RDMM8m5br9NdLcA&start_radio=1" target="_blank" class="absolute bottom-6 right-6">
+              <div class="flex gap-2 items-center text-white hover:underline hover:underline-offset-4 hover:text-primary ">
+                <p>Lihat artikel</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" viewBox="0 0 17 17">
+                  <circle cx="8.5" cy="8.5" r="8.5" fill="#2E4161"/>
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m5.33 11.187 6.049-6.08m.313 4.345-.026-4.634-4.634-.002"/>
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+        {{-- end card --}}
+        
     </div>
+  </div>
+  <div class="flex gap-4 ">
+    <button id="slideLeft">
+      <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="none" viewBox="0 0 45 45">
+        <circle cx="22.5" cy="22.5" r="22.5" fill="#2E4161" transform="matrix(-1 0 0 1 45 0)"/>
+        <path stroke="#FE9A00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M34.394 21.189h-22.7m7.567 8.7-8.647-8.7 8.647-8.701"/>
+      </svg>
+    </button>
+    <button id="slideRight">
+      <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="none" viewBox="0 0 45 45">
+        <circle cx="22.5" cy="22.5" r="22.5" fill="#2E4161"/>
+        <path stroke="#FE9A00" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.606 21.189h22.7m-7.567 8.7 8.647-8.7-8.647-8.701"/>
+      </svg>
+    </button>
+  </div>
   </section>
+
+  
 
   <!-- FAQ -->
-  <section id="faq" class="py-20 bg-white dark:bg-slate-900 transition-colors">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-8">Pertanyaan Umum</h2>
+  <section class="max-w-screen-xl mx-auto flex flex-col items-center justify-center gap-8 px-6 mt-20 md:mt-40 scroll-mt-28 mb-20">
+    <h2 class="text-4xl text-primary font-semibold">Frequently <span class="text-white">and</span> Answer.</h2>
+    <!-- ACCORDION -->
+    <div x-data="{ open: null }" class="flex flex-col gap-6 w-full ">
 
-      <div class="space-y-4">
-        @foreach ([['q' => 'Apa itu MindCheck?', 'a' => 'Sebuah aplikasi sederhana untuk membantu mahasiswa mengenali kondisi mentalnya.'], ['q' => 'Apakah hasil tes akurat?', 'a' => 'Tes ini hanya memberikan gambaran umum. Untuk diagnosis, silakan konsultasi profesional.']] as $f)
-          <div class="rounded-lg border border-gray-300 dark:border-slate-700 overflow-hidden faq-item">
-            <button
-              class="w-full text-left p-5 font-medium flex justify-between items-center hover:bg-gray-100 dark:hover:bg-slate-800 transition faq-btn">
-              {{ $f['q'] }}
-              <svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div class="p-5 text-gray-600 dark:text-slate-300 hidden faq-content">
-              {{ $f['a'] }}
-            </div>
-          </div>
-        @endforeach
+      <!-- ITEM 1 -->
+      <div class="w-full flex flex-col">
+        <button @click="open === 1 ? open = null : open = 1"
+                class="w-full flex justify-between items-center px-3">
+          <h3 class="text-lg md:text-2xl text-start">Bagaimana Mind-U terbentuk?</h3>
+          <svg :class="open === 1 && 'rotate-180'" class="transition-transform"
+              xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"
+                  d="m6.999 13.998 4.666-4.666 4.666 4.666"/>
+          </svg>
+        </button>
+        <hr class="my-2 w-full">
+
+        <div x-show="open === 1" x-collapse class="w-full">
+          <p class="px-3 text-neutral-gray">
+            Mind-U adalah sebuah sistem yang dikembangkan untuk membantu meningkatkan pemahaman masyarakat mengenai penyakit depresi melalui self-assessment.
+          </p>
+        </div>
       </div>
+
+
+      <!-- ITEM 2 -->
+      <div class="w-full flex flex-col">
+        <button @click="open === 2 ? open = null : open = 2"
+                class="w-full flex justify-between items-center px-3">
+          <h3 class="text-lg md:text-2xl text-start">Apa tujuan dibangunnya Mind-U?</h3>
+          <svg :class="open === 2 && 'rotate-180'" class="transition-transform"
+              xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"
+                  d="m6.999 13.998 4.666-4.666 4.666 4.666"/>
+          </svg>
+        </button>
+        <hr class="my-2 w-full">
+
+        <div x-show="open === 2" x-collapse class="w-full">
+          <p class="px-3 text-neutral-gray">
+            Untuk membantu pengguna mengenali emosi, memahami gejala awal depresi,
+            serta memberikan rekomendasi langkah awal yang dapat dilakukan secara mandiri.
+          </p>
+        </div>
+      </div>
+
+
+      <!-- ITEM 3 -->
+      <div class="w-full flex flex-col">
+        <button @click="open === 3 ? open = null : open = 3"
+                class="w-full flex justify-between items-center px-3">
+          <h3 class="text-lg md:text-2xl text-start">Bagaimana cara kerjanya?</h3>
+          <svg :class="open === 3 && 'rotate-180'" class="transition-transform"
+              xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"
+                  d="m6.999 13.998 4.666-4.666 4.666 4.666"/>
+          </svg>
+        </button>
+        <hr class="my-2 w-full">
+
+        <div x-show="open === 3" x-collapse class="w-full">
+          <p class="px-3 text-neutral-gray">
+            Sistem bekerja dengan menerima input pengguna, kemudian melakukan analisis sederhana berbasis rule yang berdasarkan pedoman PPDGJ (Pedoman Penggolongan dan Diagnosis Gangguan Jiwa) edisi ke-3 untuk memberikan hasil penilaian awal.
+          </p>
+        </div>
+      </div>
+
     </div>
+
+    </div>
+
+
+  </div>
+
   </section>
 
-  <!-- CTA -->
-  <section class="py-20 bg-amber-500 text-white text-center">
-    <h2 class="text-3xl font-bold mb-4">Siap Memulai Tes?</h2>
-    <p class="mb-6">Hanya butuh waktu 3–5 menit untuk memahami kondisi mentalmu.</p>
-    <a href="{{ route('kuisioner') }}"
-      class="bg-white text-amber-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition shadow-lg">
-      Mulai Sekarang
-    </a>
-  </section>
 
   <script>
-    document.querySelectorAll('.faq-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const content = btn.nextElementSibling;
-        content.classList.toggle('hidden');
-        btn.querySelector('svg').classList.toggle('rotate-180');
-      });
-    });
+    const slider = document.getElementById('slider');
+    const leftBtn = document.getElementById('slideLeft');
+    const rightBtn = document.getElementById('slideRight');
+
+    const cardWidth = (402 + 32)/2; 
+    rightBtn.onclick = () => slider.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    leftBtn.onclick = () => slider.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+
+    function checkButtons() {
+      // posisi scroll
+      const atStart = slider.scrollLeft <= 0;
+      const atEnd = Math.ceil(slider.scrollLeft + slider.clientWidth) >= slider.scrollWidth;
+
+
+      if (atStart) {
+        leftBtn.classList.add("opacity-50", "pointer-events-none");
+      } else {
+        leftBtn.classList.remove("opacity-50", "pointer-events-none");
+      }
+
+      if (atEnd) {
+        rightBtn.classList.add("opacity-50", "pointer-events-none");
+      } else {
+        rightBtn.classList.remove("opacity-50", "pointer-events-none");
+      }
+    }
+
+
+    slider.addEventListener('scroll', checkButtons);
+    window.addEventListener('load', checkButtons);
   </script>
+
 @endsection

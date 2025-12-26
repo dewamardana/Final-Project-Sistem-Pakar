@@ -25,3 +25,14 @@
     --color-accent-blue: #3B82F6;
     --color-accent-red: #EF4444;
 }
+
+
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, and Opera */
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+}

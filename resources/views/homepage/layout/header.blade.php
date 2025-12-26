@@ -1,7 +1,7 @@
 <nav class="bg-third shadow-lg sticky top-0 z-50">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 px-6">
     <a href="/" class="flex items-center space-x-2">
-      <img src="{{ asset('image/LogoNavbar.svg') }}" alt="Mental Health" class="mx-2 my-auto drop-shadow-lg w-full" />
+      <img src="{{ asset('image/LogoNavbar.svg') }}" alt="Mental Health" class="my-auto drop-shadow-lg w-full" />
     </a>
     
     <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:rounded-xl focus:ring-2" aria-controls="navbar-default" aria-expanded="false">

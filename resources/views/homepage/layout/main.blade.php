@@ -16,13 +16,15 @@
   </style>
 </head>
 
-<body class="bg-secondary text-white duration-500">
+<body class="bg-secondary text-white duration-500 ">
   @include('homepage.layout.header')
   @yield('content')
   @yield('script')
   @include('homepage.layout.footer')
   <!-- Script Flowbite -->
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
   {{-- <!-- Dark Mode Toggle Script -->
   <script>
