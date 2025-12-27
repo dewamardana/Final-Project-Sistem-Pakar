@@ -19,6 +19,7 @@ Route::post('/kuisioner/submit', [HomepageController::class, 'submitKuisioner'])
 Route::get('/hasil-konsultasi/{id}', [HomepageController::class, 'hasilKonsultasi'])->name('hasil.konsultasi');
 
 
+
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/dashboard/bobot_penilaian', BobotPenilaianController::class);

@@ -12,13 +12,16 @@ use App\Models\BobotPenilaian;
 use App\Models\KonsultasiHasil;
 use App\Models\KonsultasiGejala;
 use Illuminate\Support\Facades\Auth;
+use Hashids\Hashids;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Crypt;
 
 class HomepageController extends Controller
 {
     public function index()
     {
         return view('homepage.index', [
-            'title' => 'Welcome | Homepage',
+            'title' => 'Mind-U',
         ]);
     }
 
@@ -28,7 +31,7 @@ class HomepageController extends Controller
         $bobot_penilaians = BobotPenilaian::all(); // ambil bobot penilaian (certainty term)
 
         return view('homepage.kuisioner', [
-            'title' => 'Isi Kuisioner | Homepage',
+            'title' => 'Mind-U | Kuisioner',
             'gejalas' => $gejalas,
             'bobot_penilaians' => $bobot_penilaians,
         ]);
@@ -196,16 +199,18 @@ class HomepageController extends Controller
         ]);
 
         // Redirect ke halaman hasil diagnosis
-        return redirect()->route('hasil.konsultasi', $hasil->id);
+        return redirect()->route('hasil.konsultasi', ['id' => Crypt::encryptString($hasil->id)]);
     }
 
     public function hasilKonsultasi($id)
     {
-        $hasil = KonsultasiHasil::with(['konsultasi', 'penyakit'])->findOrFail($id);
-
-        return view('homepage.hasil_konsultasi', [
-            'title' => 'Hasil Konsultasi',
-            'hasil' => $hasil
-        ]);
+        try {
+            $id = Crypt::decryptString($id);
+            $hasil = KonsultasiHasil::with(['konsultasi', 'penyakit'])->findOrFail($id);
+            
+            return view('homepage.hasil_konsultasi', ['title' => 'Mind-U | Hasil Konsultasi','hasil' => $hasil]);
+        } catch (DecryptException $e) {
+            abort(404);
+        }
     }
 }

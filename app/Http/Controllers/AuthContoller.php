@@ -10,7 +10,7 @@ class AuthContoller extends Controller
     public function login()
     {
         return view('homepage.auth.login', [
-            'title' => 'Login Page'
+            'title' => 'Mind-U | Login'
         ]); // halaman login
     }
 

@@ -1,56 +1,76 @@
 <!-- Sidebar -->
 <aside id="sidebar"
   class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full sm:translate-x-0 bg-white border-r border-gray-200 dark:bg-slate-800 dark:border-slate-700">
-  <div class="h-full px-3 pb-4 overflow-y-auto">
-    <ul class="space-y-2 font-medium">
+  <div class="h-full px-3 pb-4 overflow-y-auto text-white">
+    <ol class="space-y-2 font-medium">
       <li>
-        <a href="{{ route('gejala.index') }}"
-          class="flex items-center p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-700">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6">
-            </path>
+        <a href="{{ route('dashboard') }}"
+          class="flex items-center p-2 rounded-lg {{ request()->routeIs('dashboard') ? 'text-primary font-bold underline underline-offset-8' : 'text-white' }} hover:underline hover:underline-offset-8 hover:text-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="none" viewBox="0 0 29 29">
+            <path fill="currentColor" d="M15.355 2.77 26.23 13.647c.761.761.222 2.062-.855 2.062h-1.208v7.25a3.625 3.625 0 0 1-3.625 3.625h-1.208v-8.458a3.625 3.625 0 0 0-3.412-3.619l-.213-.006h-2.417a3.625 3.625 0 0 0-3.625 3.625v8.458H8.46a3.625 3.625 0 0 1-3.625-3.625v-7.25h-1.21c-1.075 0-1.615-1.301-.854-2.062L13.646 2.77a1.208 1.208 0 0 1 1.709 0Zm.354 14.147a1.208 1.208 0 0 1 1.208 1.208v8.458h-4.833v-8.458a1.209 1.209 0 0 1 1.067-1.2l.141-.008h2.417Z"/>
           </svg>
-          <span class="ml-3">Gejala</span>
+          <span class="ml-2 text-md">Dashboard</span>
         </a>
       </li>
       <li>
-        <a href="{{ route('bobot_penilaian.index') }}"
-          class="flex items-center p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-700">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6">
-            </path>
-          </svg>
-          <span class="ml-3">CF User</span>
-        </a>
-      </li>
-      <li>
-        <a href="{{ route('penyakit.index') }}"
-          class="flex items-center p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-700">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-          </svg>
-          <span class="ml-3">Depresi</span>
-        </a>
-      </li>
-      <li>
-        <a href="{{ route('aturan.index') }}"
-          class="flex items-center p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-700">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-          </svg>
-          <span class="ml-3">Rule Base</span>
-        </a>
+        <div>
+          <div class="flex items-center p-2 rounded-lg  {{ request()->routeIs(['penyakit.index', 'gejala.index', 'bobot_penilaian.index', 'aturan.index']) ? 'text-primary font-bold' : 'text-white' }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="none" viewBox="0 0 29 29">
+                <path fill="currentColor" d="M16.778 11.59v-1.123a8.829 8.829 0 0 1 2.086-.74 10.513 10.513 0 0 1 2.282-.246c.446 0 .875.028 1.286.085.41.058.834.14 1.271.245v1.097a7.106 7.106 0 0 0-1.232-.28 10.427 10.427 0 0 0-1.325-.078c-.781 0-1.543.088-2.286.263a8.659 8.659 0 0 0-2.083.777m0 6.6v-1.172a7.996 7.996 0 0 1 2.075-.738 10.906 10.906 0 0 1 2.294-.247c.446 0 .875.03 1.286.087.41.057.834.138 1.271.243v1.098a7.097 7.097 0 0 0-1.232-.28 10.427 10.427 0 0 0-1.325-.078 9.22 9.22 0 0 0-2.286.284 9.066 9.066 0 0 0-2.083.803Zm0-3.277v-1.17a8.789 8.789 0 0 1 2.085-.739 10.62 10.62 0 0 1 2.284-.246 9.5 9.5 0 0 1 1.285.084c.41.058.834.14 1.27.246v1.097a6.922 6.922 0 0 0-1.232-.28c-.4-.053-.841-.08-1.323-.08a9.11 9.11 0 0 0-2.286.288 9.404 9.404 0 0 0-2.083.8Zm-1.673 6.015c.98-.546 1.968-.94 2.965-1.184a12.846 12.846 0 0 1 3.077-.362c.725 0 1.377.044 1.955.134.579.09 1.089.209 1.531.358a.52.52 0 0 0 .511-.035c.156-.101.233-.26.232-.477V8.468a.626.626 0 0 0-.116-.372c-.077-.108-.209-.2-.395-.278a10.297 10.297 0 0 0-1.814-.483 12.437 12.437 0 0 0-1.904-.132c-1.055 0-2.108.155-3.157.466a9.655 9.655 0 0 0-2.885 1.402v11.857ZM14.5 22.68a12.137 12.137 0 0 0-3.165-1.549A11.35 11.35 0 0 0 6 20.747a8.648 8.648 0 0 0-1.772.508c-.438.175-.85.122-1.234-.159-.385-.28-.578-.668-.578-1.163V8.254c0-.299.079-.576.236-.832.157-.256.377-.435.66-.534a10.38 10.38 0 0 1 2.22-.677 12.712 12.712 0 0 1 2.321-.215c1.185 0 2.339.17 3.464.511 1.126.34 2.187.836 3.182 1.486a12.347 12.347 0 0 1 3.183-1.486 11.91 11.91 0 0 1 3.463-.511c.784 0 1.558.072 2.323.215.765.143 1.504.368 2.218.677.284.1.504.278.661.534.157.255.236.533.236.832v11.679c0 .494-.208.874-.624 1.14a1.43 1.43 0 0 1-1.329.133 8.56 8.56 0 0 0-1.713-.47 10.724 10.724 0 0 0-1.772-.147c-1.192 0-2.352.18-3.48.541a12.137 12.137 0 0 0-3.166 1.55"/>
+              </svg>
+            <span class="ml-2 text-md">Knowledge Based</span>
+          </div>
+        </div>
+        <ul>
+          <li>
+            <a href="{{ route('gejala.index') }}"
+              class="ml-8 flex items-center p-2 rounded-lg {{ request()->routeIs('gejala.index') ? 'text-primary font-bold underline underline-offset-8' : 'text-white' }} hover:underline hover:underline-offset-8 hover:text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="none" viewBox="0 0 29 29">
+                <path fill="currentColor" d="M14.5 18.73a4.23 4.23 0 1 1 0-8.46 4.23 4.23 0 0 1 0 8.46Zm8.978-3.058a9.25 9.25 0 0 0 .085-1.172c0-.399-.036-.797-.085-1.208l2.55-1.97a.61.61 0 0 0 .145-.773l-2.417-4.181a.594.594 0 0 0-.737-.266L20.01 7.31c-.628-.47-1.28-.882-2.042-1.184l-.447-3.202a.611.611 0 0 0-.604-.507h-4.833a.61.61 0 0 0-.604.507l-.447 3.202c-.762.302-1.414.713-2.043 1.184L5.982 6.103a.594.594 0 0 0-.737.266l-2.417 4.18a.596.596 0 0 0 .145.774l2.55 1.97c-.049.41-.085.81-.085 1.208 0 .399.036.786.085 1.172l-2.55 2.006a.596.596 0 0 0-.145.773l2.417 4.181c.145.266.47.363.737.266l3.008-1.22c.629.483 1.281.894 2.043 1.196l.447 3.202a.61.61 0 0 0 .604.507h4.833a.61.61 0 0 0 .604-.507l.447-3.202a8.796 8.796 0 0 0 2.042-1.196l3.01 1.22c.265.097.591 0 .736-.266l2.417-4.18a.61.61 0 0 0-.145-.774l-2.55-2.006Z"/>
+              </svg>
+              <span class="ml-2 text-md">Gejala</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ route('bobot_penilaian.index') }}"
+              class="ml-8 flex items-center p-2 rounded-lg {{ request()->routeIs('bobot_penilaian.index') ? 'text-primary font-bold underline underline-offset-8' : 'text-white' }} hover:underline hover:underline-offset-8 hover:text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="none" viewBox="0 0 29 29">
+                <path fill="currentColor" d="M14.5 18.73a4.23 4.23 0 1 1 0-8.46 4.23 4.23 0 0 1 0 8.46Zm8.978-3.058a9.25 9.25 0 0 0 .085-1.172c0-.399-.036-.797-.085-1.208l2.55-1.97a.61.61 0 0 0 .145-.773l-2.417-4.181a.594.594 0 0 0-.737-.266L20.01 7.31c-.628-.47-1.28-.882-2.042-1.184l-.447-3.202a.611.611 0 0 0-.604-.507h-4.833a.61.61 0 0 0-.604.507l-.447 3.202c-.762.302-1.414.713-2.043 1.184L5.982 6.103a.594.594 0 0 0-.737.266l-2.417 4.18a.596.596 0 0 0 .145.774l2.55 1.97c-.049.41-.085.81-.085 1.208 0 .399.036.786.085 1.172l-2.55 2.006a.596.596 0 0 0-.145.773l2.417 4.181c.145.266.47.363.737.266l3.008-1.22c.629.483 1.281.894 2.043 1.196l.447 3.202a.61.61 0 0 0 .604.507h4.833a.61.61 0 0 0 .604-.507l.447-3.202a8.796 8.796 0 0 0 2.042-1.196l3.01 1.22c.265.097.591 0 .736-.266l2.417-4.18a.61.61 0 0 0-.145-.774l-2.55-2.006Z"/>
+              </svg>
+    
+              <span class="ml-2 text-md">CF User</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ route('penyakit.index') }}"
+              class="ml-8 flex items-center p-2 rounded-lg {{ request()->routeIs('penyakit.index') ? 'text-primary font-bold underline underline-offset-8' : 'text-white' }} hover:underline hover:underline-offset-8 hover:text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="none" viewBox="0 0 29 29">
+                <path fill="currentColor" d="M14.5 18.73a4.23 4.23 0 1 1 0-8.46 4.23 4.23 0 0 1 0 8.46Zm8.978-3.058a9.25 9.25 0 0 0 .085-1.172c0-.399-.036-.797-.085-1.208l2.55-1.97a.61.61 0 0 0 .145-.773l-2.417-4.181a.594.594 0 0 0-.737-.266L20.01 7.31c-.628-.47-1.28-.882-2.042-1.184l-.447-3.202a.611.611 0 0 0-.604-.507h-4.833a.61.61 0 0 0-.604.507l-.447 3.202c-.762.302-1.414.713-2.043 1.184L5.982 6.103a.594.594 0 0 0-.737.266l-2.417 4.18a.596.596 0 0 0 .145.774l2.55 1.97c-.049.41-.085.81-.085 1.208 0 .399.036.786.085 1.172l-2.55 2.006a.596.596 0 0 0-.145.773l2.417 4.181c.145.266.47.363.737.266l3.008-1.22c.629.483 1.281.894 2.043 1.196l.447 3.202a.61.61 0 0 0 .604.507h4.833a.61.61 0 0 0 .604-.507l.447-3.202a8.796 8.796 0 0 0 2.042-1.196l3.01 1.22c.265.097.591 0 .736-.266l2.417-4.18a.61.61 0 0 0-.145-.774l-2.55-2.006Z"/>
+              </svg>
+              <span class="ml-2 text-md">Nama Depresi</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{ route('aturan.index') }}"
+              class="ml-8 flex items-center p-2 rounded-lg {{ request()->routeIs('aturan.index') ? 'text-primary font-bold underline underline-offset-8' : 'text-white' }} hover:underline hover:underline-offset-8 hover:text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="none" viewBox="0 0 29 29">
+                <path fill="currentColor" d="M14.5 18.73a4.23 4.23 0 1 1 0-8.46 4.23 4.23 0 0 1 0 8.46Zm8.978-3.058a9.25 9.25 0 0 0 .085-1.172c0-.399-.036-.797-.085-1.208l2.55-1.97a.61.61 0 0 0 .145-.773l-2.417-4.181a.594.594 0 0 0-.737-.266L20.01 7.31c-.628-.47-1.28-.882-2.042-1.184l-.447-3.202a.611.611 0 0 0-.604-.507h-4.833a.61.61 0 0 0-.604.507l-.447 3.202c-.762.302-1.414.713-2.043 1.184L5.982 6.103a.594.594 0 0 0-.737.266l-2.417 4.18a.596.596 0 0 0 .145.774l2.55 1.97c-.049.41-.085.81-.085 1.208 0 .399.036.786.085 1.172l-2.55 2.006a.596.596 0 0 0-.145.773l2.417 4.181c.145.266.47.363.737.266l3.008-1.22c.629.483 1.281.894 2.043 1.196l.447 3.202a.61.61 0 0 0 .604.507h4.833a.61.61 0 0 0 .604-.507l.447-3.202a8.796 8.796 0 0 0 2.042-1.196l3.01 1.22c.265.097.591 0 .736-.266l2.417-4.18a.61.61 0 0 0-.145-.774l-2.55-2.006Z"/>
+              </svg>
+              <span class="ml-2 text-md">Rule Base</span>
+            </a>
+          </li>
+        </ul>
       </li>
 
       <li>
         <a href="{{ route('konsultasi.index') }}"
-          class="flex items-center p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-700">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+          class="flex items-center p-2 rounded-lg {{ request()->routeIs('konsultasi.index') ? 'text-primary font-bold underline underline-offset-8' : 'text-white' }} hover:underline hover:underline-offset-8 hover:text-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="none" viewBox="0 0 29 29">
+            <path fill="currentColor" d="M14.5 25.375c-2.537 0-4.783-.77-6.736-2.31-1.954-1.54-3.223-3.51-3.807-5.907a.894.894 0 0 1 .182-.83c.2-.251.473-.397.815-.438.322-.04.614.02.876.18.262.162.443.404.544.726.483 1.812 1.48 3.293 2.99 4.44 1.511 1.148 3.223 1.722 5.136 1.722 2.356 0 4.355-.82 5.997-2.461 1.642-1.641 2.462-3.64 2.461-5.997 0-2.357-.82-4.356-2.461-5.996-1.64-1.64-3.64-2.46-5.997-2.462-1.39 0-2.688.322-3.897.966a8.98 8.98 0 0 0-3.05 2.659h2.114c.342 0 .63.116.861.348.232.232.348.518.347.86 0 .342-.117.629-.348.861a1.156 1.156 0 0 1-.86.347H4.833c-.342 0-.629-.116-.86-.348a1.175 1.175 0 0 1-.348-.86V6.042c0-.343.116-.63.348-.86.232-.232.519-.348.86-.349.342 0 .63.116.862.348.233.233.348.52.347.86v1.632a10.55 10.55 0 0 1 3.761-2.99A10.792 10.792 0 0 1 14.5 3.624c1.51 0 2.925.287 4.245.862a11.073 11.073 0 0 1 3.444 2.324 11.04 11.04 0 0 1 2.326 3.444c.574 1.32.86 2.735.86 4.245 0 1.51-.288 2.925-.86 4.245a10.985 10.985 0 0 1-2.326 3.444 11.122 11.122 0 0 1-3.444 2.326c-1.318.575-2.733.862-4.245.86Zm1.208-11.358 3.021 3.02c.222.222.332.504.332.846 0 .343-.11.625-.332.846a1.146 1.146 0 0 1-.846.332c-.342 0-.624-.11-.845-.332l-3.384-3.383a1.207 1.207 0 0 1-.272-.407 1.259 1.259 0 0 1-.09-.47V9.668c0-.343.116-.63.348-.86.232-.232.518-.348.86-.349.342 0 .629.116.861.348.233.233.349.52.347.86v4.35Z"/>
           </svg>
-          <span class="ml-3">Riwayat Hasil</span>
+          <span class="ml-2 text-md">Riwayat Hasil</span>
         </a>
       </li>
-    </ul>
+    </ol>
   </div>
 </aside>
