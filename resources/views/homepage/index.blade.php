@@ -13,7 +13,7 @@
           Kenali <span class="font-bold text-primary">Kondisimu</span>
         </h1>
         <p>
-          <span class="font-bold">Mind-U</span> adalah aplikasi sederhana untuk membantu mahasiswa mengenali kondisi mentalnya melalui
+          <span class="font-bold">Mind-U</span> adalah aplikasi sederhana untuk membantu seseorang mengenali kondisi mentalnya melalui
           kuesioner singkat dan mendapatkan gambaran awal tingkat stres atau depresi.
         </p>
         <a href="{{ route('kuisioner') }}" class="text-white bg-primary hover:bg-amber-600 focus:ring-4 focus:outline-none focus:ring-amber-300 font-semibold rounded-xl textbase px-5 py-3 shadow-lg w-fit">
@@ -25,7 +25,7 @@
   </section>
 
 
-  <!-- Fitur Utama -->
+  <!-- Main -->
   <section class="max-w-screen-xl mx-auto flex flex-col items-center justify-center gap-8 px-6">
     <h2 class="text-4xl text-primary font-semibold">Mind-U</h2>
     <div class="flex flex-col md:flex-row gap-8 max-w-screen-xl items-center justify-center">
@@ -44,6 +44,7 @@
     </div>
   </section>
 
+  {{-- artikel --}}
   <section id="artikel" class="max-w-screen-xl mx-auto flex flex-col items-center justify-center gap-8 px-6 mt-30 md:mt-60 scroll-mt-28">
     <h2 class="text-4xl text-primary font-semibold">Artikel Kesehatan <span class="text-white">Untukmu.</span></h2>
     {{-- card section --}}
@@ -57,9 +58,9 @@
             </div>
           </div>
           <div class="px-6 py-3 flex flex-col gap-2 ">
-            <h3 class="text-xl text-white font-semibold">Mencegah terjadinya depresi</h3>
-            <p class="text-neutral-gray line-clamp-4 md:line-clamp-6 md:text-justify" >Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.</p>
-            <a href="https://www.youtube.com/watch?v=8m5br9NdLcA&list=RDMM8m5br9NdLcA&start_radio=1" target="_blank" class="absolute bottom-6 right-6">
+            <h3 class="text-lg text-white font-semibold line-clamp-2 md:line-clamp-1">ALODOKTER: Apa itu depresi?</h3>
+            <p class="text-neutral-gray line-clamp-4 md:line-clamp-6 md:text-justify" >Depresi adalah salah satu bentuk gangguan suasana hati, yang ditandai dengan perasaan sedih mendalam dan hilangnya minat terhadap hal-hal yang biasanya disukai. Seseorang dinyatakan mengalami depresi bila sudah 2 minggu merasa sedih, putus harapan, atau tidak berharga.</p>
+            <a href="https://www.alodokter.com/depresi" target="_blank" class="absolute bottom-6 right-6">
               <div class="flex gap-2 items-center text-white hover:underline hover:underline-offset-4 hover:text-primary ">
                 <p>Lihat artikel</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" viewBox="0 0 17 17">
@@ -74,14 +75,14 @@
         {{-- card --}}
         <div class="h-[400px] w-[302px] md:h-[500px] md:w-[402px] bg-[#1D293D] rounded-2xl relative shrink-0">
           <div class="relative h-[145px] md:h-[245px] overflow-hidden rounded-t-2xl">
-            <img src="{{ asset('image/artikel/defaultArtikel.png') }}" alt="" class="absolute inset-0 z-10">
+            <img src="{{ asset('image/artikel/three.jpg') }}" alt="" class="absolute inset-0 z-10">
             <div class="bg-linear-to-t from-black/70 to-black/0 z-20 relative h-full">
             </div>
           </div>
           <div class="px-6 py-3 flex flex-col gap-2 ">
-            <h3 class="text-xl text-white font-semibold">Mencegah terjadinya depresi</h3>
-            <p class="text-neutral-gray line-clamp-4 md:line-clamp-6 md:text-justify" >Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.</p>
-            <a href="https://www.youtube.com/watch?v=8m5br9NdLcA&list=RDMM8m5br9NdLcA&start_radio=1" target="_blank" class="absolute bottom-6 right-6">
+            <h3 class="text-lg text-white font-semibold line-clamp-2 md:line-clamp-1">Pentingnya Kesehatan Mental bagi Remaja</h3>
+            <p class="text-neutral-gray line-clamp-4 md:line-clamp-6 md:text-justify" >Masa remaja adalah masa yang penting dalam pembentukan generasi akan datang yang sehat, tangguh, dan produktif. Untuk mewujudkannya, menjaga kesehatan fisik saja tidak cukup. Kesehatan mental remaja juga memainkan peranan penting dalam menentukan kualitas hidup dan kesejahteraan mereka. Namun, akhir-akhir ini masalah kesehatan mental di kalangan remaja semakin meningkat. Sebuah survei yang dilakukan oleh I-NAMHS (Indonesia National Adolescent Mental Health Survey) tahun 2022 menunjukkan sebanyak 15.5 juta atau sekitar 34.9% remaja mengalami masalah kesehatan mental. Kemudian, data dari WHO juga menunjukkan 1 di antara 7 anak berusia 10-19 tahun mengalami masalah kesehatan mental.</p>
+            <a href="https://ayosehat.kemkes.go.id/pentingnya-kesehatan-mental-bagi-remaja" target="_blank" class="absolute bottom-6 right-6">
               <div class="flex gap-2 items-center text-white hover:underline hover:underline-offset-4 hover:text-primary ">
                 <p>Lihat artikel</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" viewBox="0 0 17 17">
@@ -96,14 +97,14 @@
         {{-- card --}}
         <div class="h-[400px] w-[302px] md:h-[500px] md:w-[402px] bg-[#1D293D] rounded-2xl relative shrink-0">
           <div class="relative h-[145px] md:h-[245px] overflow-hidden rounded-t-2xl">
-            <img src="{{ asset('image/artikel/defaultArtikel.png') }}" alt="" class="absolute inset-0 z-10">
+            <img src="{{ asset('image/artikel/two.jpg') }}" alt="" class="absolute inset-0 z-10">
             <div class="bg-linear-to-t from-black/70 to-black/0 z-20 relative h-full">
             </div>
           </div>
           <div class="px-6 py-3 flex flex-col gap-2 ">
-            <h3 class="text-xl text-white font-semibold">Mencegah terjadinya depresi</h3>
-            <p class="text-neutral-gray line-clamp-4 md:line-clamp-6 md:text-justify" >Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.</p>
-            <a href="https://www.youtube.com/watch?v=8m5br9NdLcA&list=RDMM8m5br9NdLcA&start_radio=1" target="_blank" class="absolute bottom-6 right-6">
+            <h3 class="text-lg text-white font-semibold line-clamp-2 md:line-clamp-1">Gaya Hidup Sehat Bisa Anda Mulai Sekarang</h3>
+            <p class="text-neutral-gray line-clamp-4 md:line-clamp-6 md:text-justify" >Tidak sedikit orang yang menunggu waktu tepat untuk menerapkan gaya hidup sehat. Padahal sebenarnya, waktu yang paling tepat adalah sesegera mungkin dan selama mungkin. Gaya hidup sehat sebaiknya dilakukan terus-menerus dan tidak berjeda agar hidup senantiasa lebih baik. Gaya hidup sehat adalah cara kita menjalani hidup guna menurunkan risiko terkena penyakit atau meninggal dunia di usia muda. Memang tidak semua penyakit dapat dicegah, tetapi sebagian besar penyakit kronis atau penyakit penyebab kematian, seperti jantung koroner dan kanker, bisa Anda dihindari dengan menerapkan gaya hidup yang sehat.</p>
+            <a href="https://www.alodokter.com/gaya-hidup-sehat-bisa-anda-mulai-sekarang" target="_blank" class="absolute bottom-6 right-6">
               <div class="flex gap-2 items-center text-white hover:underline hover:underline-offset-4 hover:text-primary ">
                 <p>Lihat artikel</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" viewBox="0 0 17 17">
@@ -118,14 +119,14 @@
         {{-- card --}}
         <div class="h-[400px] w-[302px] md:h-[500px] md:w-[402px] bg-[#1D293D] rounded-2xl relative shrink-0">
           <div class="relative h-[145px] md:h-[245px] overflow-hidden rounded-t-2xl">
-            <img src="{{ asset('image/artikel/defaultArtikel.png') }}" alt="" class="absolute inset-0 z-10">
+            <img src="{{ asset('image/artikel/one.jpg') }}" alt="" class="absolute inset-0 z-10">
             <div class="bg-linear-to-t from-black/70 to-black/0 z-20 relative h-full">
             </div>
           </div>
           <div class="px-6 py-3 flex flex-col gap-2 ">
-            <h3 class="text-xl text-white font-semibold">Mencegah terjadinya depresi</h3>
-            <p class="text-neutral-gray line-clamp-4 md:line-clamp-6 md:text-justify" >Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.</p>
-            <a href="https://www.youtube.com/watch?v=8m5br9NdLcA&list=RDMM8m5br9NdLcA&start_radio=1" target="_blank" class="absolute bottom-6 right-6">
+            <h3 class="text-lg text-white font-semibold line-clamp-2 md:line-clamp-1">Hati-Hati, Dampak Overthinking Bisa Berakibat Fatal</h3>
+            <p class="text-neutral-gray line-clamp-4 md:line-clamp-6 md:text-justify" >Dampak overthinking tidak hanya bisa membuat hubungan dengan orang lain jadi terganggu lho, tetapi juga bisa memengaruhi kesehatan mental dan fisik pelakunya. Bayangkan saja, jika overthinking membuatmu jadi begadang, takut, atau jadi cemas berlebihan, bukankah justru bisa jadi sakit?  Overthinking adalah istilah untuk perilaku memikirkan segala sesuatu secara berlebihan. Hal ini bisa dipicu oleh adanya kekhawatiran akan suatu hal, mulai dari masalah sepele dalam kehidupan sehari-hari, masalah besar, hingga trauma di masa lalu, yang membuat kamu tidak bisa berhenti memikirkannya.</p>
+            <a href="https://www.alodokter.com/hati-hati-dampak-overthinking-bisa-berakibat-fatal" target="_blank" class="absolute bottom-6 right-6">
               <div class="flex gap-2 items-center text-white hover:underline hover:underline-offset-4 hover:text-primary ">
                 <p>Lihat artikel</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" viewBox="0 0 17 17">
@@ -140,14 +141,14 @@
         {{-- card --}}
         <div class="h-[400px] w-[302px] md:h-[500px] md:w-[402px] bg-[#1D293D] rounded-2xl relative shrink-0">
           <div class="relative h-[145px] md:h-[245px] overflow-hidden rounded-t-2xl">
-            <img src="{{ asset('image/artikel/defaultArtikel.png') }}" alt="" class="absolute inset-0 z-10">
+            <img src="{{ asset('image/artikel/four.png') }}" alt="" class="absolute inset-0 z-10">
             <div class="bg-linear-to-t from-black/70 to-black/0 z-20 relative h-full">
             </div>
           </div>
           <div class="px-6 py-3 flex flex-col gap-2 ">
-            <h3 class="text-xl text-white font-semibold">Mencegah terjadinya depresi</h3>
-            <p class="text-neutral-gray line-clamp-4 md:line-clamp-6 md:text-justify" >Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.Membahas tentang bagaimana langkah yang baik dalam mengendalikan diri untuk mencegah pikiran dalam diri.</p>
-            <a href="https://www.youtube.com/watch?v=8m5br9NdLcA&list=RDMM8m5br9NdLcA&start_radio=1" target="_blank" class="absolute bottom-6 right-6">
+            <h3 class="text-lg text-white font-semibold line-clamp-2 md:line-clamp-1">Mengapa Kita Sering Terjebak dalam Pikiran Sendiri?</h3>
+            <p class="text-neutral-gray line-clamp-4 md:line-clamp-6 md:text-justify" >Pernahkah kamu merasa tidak bisa tidur karena terlalu memikirkan sesuatu yang belum tentu terjadi? Atau, merasa stres karena memikirkan berbagai kemungkinan buruk dari satu keputusan kecil? Inilah yang disebut overthinking — kondisi di mana seseorang terlalu lama dan terlalu dalam memproses suatu pikiran, bahkan hingga berdampak negatif terhadap kesehatan mental. Dalam dunia psikologi, fenomena ini menjadi salah satu topik menarik untuk dikaji, terutama bagi mahasiswa atau calon mahasiswa S1 Psikologi yang tertarik mendalami bagaimana pikiran dan emosi manusia saling memengaruhi. Artikel ini akan mengulas secara mendalam tentang overthinking, penyebabnya, serta bagaimana psikologi menjelaskan mengapa kita sering terjebak dalam pikiran sendiri.</p>
+            <a href="https://bpsy.telkomuniversity.ac.id/overthinking-mengapa-kita-sering-terjebak-dalam-pikiran-sendiri/" target="_blank" class="absolute bottom-6 right-6">
               <div class="flex gap-2 items-center text-white hover:underline hover:underline-offset-4 hover:text-primary ">
                 <p>Lihat artikel</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" viewBox="0 0 17 17">
